@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="moyu222">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Dynamic Method Selection Puzzle[[lecture10 Subtype Polymorphism vs. HoFs]][[lecture10 Subtype Polymorphism vs. HoFs#Comparables|comparator]]  [!summary]The rules:  Compiler allows memory box to hold a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MoyuBlog">
+<meta property="og:url" content="https://moyu222.github.io/2024/12/11/lecture10%20Subtype%20Polymorphism%20vs.%20HoFs/index.html">
+<meta property="og:site_name" content="MoyuBlog">
+<meta property="og:description" content="Dynamic Method Selection Puzzle[[lecture10 Subtype Polymorphism vs. HoFs]][[lecture10 Subtype Polymorphism vs. HoFs#Comparables|comparator]]  [!summary]The rules:  Compiler allows memory box to hold a">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-09T03:08:01.144Z">
+<meta property="article:author" content="moyu222">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="DataStructure">
+<meta property="article:tag" content="UCB">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>MoyuBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"moyu222.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text=""></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-12-11 00:00" pubdate>
+          2024年12月11日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          358 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          3 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header"></h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Dynamic-Method-Selection-Puzzle"><a href="#Dynamic-Method-Selection-Puzzle" class="headerlink" title="Dynamic Method Selection Puzzle"></a>Dynamic Method Selection Puzzle</h2><p>[[lecture10 Subtype Polymorphism vs. HoFs]]<br>[[lecture10 Subtype Polymorphism vs. HoFs#Comparables|comparator]]</p>
+<blockquote>
+<p>[!summary]<br>The rules:</p>
+<ul>
+<li>Compiler allows memory box to hold any subtype.</li>
+<li>Compiler allows calls based on static type.</li>
+<li>Overridden non-static methods are selected at run time based on dynamic type.</li>
+<li>Everything else is based on static type,including overloaded methods</li>
+</ul>
+</blockquote>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">Object o3 <span class="hljs-operator">=</span> (Dog) o2<span class="hljs-comment">;</span><br>o3.bark()<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[!bug] </p>
+<ul>
+<li>Object do not have bark method </li>
+<li>Based on rule 2</li>
+</ul>
+</blockquote>
+<h2 id="Subtype-polymorphic-子类型多态性"><a href="#Subtype-polymorphic-子类型多态性" class="headerlink" title="Subtype polymorphic   子类型多态性"></a>Subtype polymorphic   子类型多态性</h2><ul>
+<li>polymorphic: “providing a single interface to entities of different types”</li>
+</ul>
+<p>多个子类型使用同一个接口，在运行过程中根据不同的动态类型选择不同的方法，体现面向对象的思维。</p>
+<h3 id="Subtype-polymorphic-vs-Explicit-Higher-Order-functions"><a href="#Subtype-polymorphic-vs-Explicit-Higher-Order-functions" class="headerlink" title="Subtype polymorphic vs. Explicit Higher Order functions"></a>Subtype polymorphic vs. Explicit Higher Order functions</h3><p>Explicit HoF Approach</p>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">def print_larger(<span class="hljs-variable language_">x</span>, <span class="hljs-variable language_">y</span>, compare, stringify):<br>	<span class="hljs-keyword">if</span> compare(<span class="hljs-variable language_">x</span>, <span class="hljs-variable language_">y</span>):<br>		<span class="hljs-keyword">return</span> stringify(<span class="hljs-variable language_">x</span>)<br>	<span class="hljs-keyword">return</span> stringify(<span class="hljs-variable language_">y</span>)<br></code></pre></td></tr></table></figure>
+
+<p>Subtype Polymorphism Approach</p>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">def print_larger(<span class="hljs-variable language_">x</span>, <span class="hljs-variable language_">y</span>):<br>	<span class="hljs-keyword">if</span> <span class="hljs-variable language_">x</span>.largerThan(<span class="hljs-variable language_">y</span>):<br>		<span class="hljs-keyword">return</span> <span class="hljs-variable language_">x</span>.str()<br>	<span class="hljs-keyword">return</span> <span class="hljs-variable language_">y</span>.str()<br></code></pre></td></tr></table></figure>
+<p>根据x，y不同的类型调用统一接口的largerThan的不同方法。面向对象</p>
+<h2 id="DIY-Comparison"><a href="#DIY-Comparison" class="headerlink" title="DIY Comparison"></a>DIY Comparison</h2><p>Goal: The One True Max function</p>
+<p>![[Pasted image 20241211142933.png]]</p>
+<p>![[Pasted image 20241211143356.png]]</p>
+<ul>
+<li>create an interface to make all its subtype are comparable.</li>
+<li>Make One True Max function use same name method – &gt; dynamic selection.</li>
+<li>use Max class in terms of this interface.</li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-symbol">Ourcomparable</span> &#123;<br>	<span class="hljs-built_in">int</span> compareTo(Object obj);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">OurComparable</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compareTo(Object obj)&#123;<br>		<span class="hljs-comment">/** Cast may cause runtime errors</span><br><span class="hljs-comment">		Dog uddaDog = (Dog) obj:</span><br><span class="hljs-comment">		return this.size - uddadog.size;</span><br><span class="hljs-comment">	&#125;</span><br><span class="hljs-comment">&#125;...</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs perl">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Maximizer</span> </span>&#123;<br>	public static OurComparable max(OurComparable[] a) &#123;<br>	...<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">Dog</span>[] dogs = new Dog[] &#123;<span class="hljs-built_in">d1</span>, <span class="hljs-built_in">d2</span>, <span class="hljs-built_in">d3</span>&#125;<span class="hljs-comment">;</span><br><span class="hljs-symbol">Dog</span> largest = (Dog) Maximizer.max(dogs)<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[!success] </p>
+<ul>
+<li>No need for array maximization code in every custom type (i.e. no Dog.maxDog(Dog[]) function required).</li>
+<li>Code that operates on multiple types (mostly) gracefully</li>
+</ul>
+</blockquote>
+<h2 id="Comparables"><a href="#Comparables" class="headerlink" title="Comparables"></a>Comparables</h2><blockquote>
+<p>[!warning] Two issues:</p>
+<ul>
+<li>Awkward casting to&#x2F;from Objects.</li>
+<li>We made it up.</li>
+<li>很多类没有实现OurComparable例如String等</li>
+<li>没有类或函数使用OurComparable</li>
+</ul>
+</blockquote>
+<p>我们要使用一个内置的comparable接口 built-in Comparable interface.</p>
+<ul>
+<li>use generics</li>
+</ul>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">T</span>&gt; &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compareTo(T obj);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compareTo(Dog uddaDog) &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.size - uddadog.size;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[!success] Advantages:</p>
+<ul>
+<li>Lots of built in classes implement Comparable</li>
+<li>Lots of libraries use the Comparable interface</li>
+<li>Avoids need for casts.</li>
+</ul>
+</blockquote>
+<h2 id="Comparators"><a href="#Comparators" class="headerlink" title="Comparators"></a>Comparators</h2><blockquote>
+<p>[!hint] </p>
+<ul>
+<li>use different way to sort or compare somethings</li>
+<li>In this case, we can use the size of the dogs, or we can use the name of dogs like a, b, c…</li>
+<li>&#x3D;&#x3D;so we use comparators&#x3D;&#x3D;</li>
+</ul>
+</blockquote>
+<figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">def print_larger(T <span class="hljs-variable language_">x</span>, T <span class="hljs-variable language_">y</span>, comparator&lt;T&gt; c):<br>	<span class="hljs-keyword">if</span> c.compare(<span class="hljs-variable language_">x</span>,<span class="hljs-variable language_">y</span>):<br>		<span class="hljs-keyword">return</span> <span class="hljs-variable language_">x</span>.str();<br>	<span class="hljs-keyword">return</span> <span class="hljs-variable language_">y</span>.str();<br></code></pre></td></tr></table></figure>
+
+<p>![[Pasted image 20241211151306.png]]</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br>	<span class="hljs-keyword">private</span> String name;<br>	<span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> size;<br>	<br>	<span class="hljs-keyword">public</span> static <span class="hljs-keyword">class</span> <span class="hljs-symbol">NameComparator</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparator</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br>		<span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compare(Dog d1, Dog d2) &#123;<br>			<span class="hljs-keyword">return</span> d1.name.compareTo(d2.name);<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>more formal way</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">Dog</span>&gt;&#123;<br><br><br>	<span class="hljs-keyword">private</span> static <span class="hljs-keyword">class</span> <span class="hljs-symbol">NameComparator</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparator</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br>		<span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compare(Dog d1, Dog d2) &#123;<br>			<span class="hljs-keyword">return</span> d1.name.compareTo(d2.name);<br>		&#125;<br>	&#125;<br>	<br>	<span class="hljs-keyword">public</span> static Comparator&lt;Dog&gt; getNameComparator() &#123;<br>		<span class="hljs-keyword">return</span> new Namecomparator();<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs perl">immport java.util.Comparator<br>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DogLauncher</span> </span>&#123;<br>	Comparator&lt;Dog&gt; nc = Dog.getNameComparator();<br>	<span class="hljs-keyword">if</span> (nc,compare(d1, d2) &gt; <span class="hljs-number">0</span>) &#123;<br>		d1.bark()<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		d3.bark()<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>![[Pasted image 20241211153720.png]]</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/" class="print-no-link">#java</a>
+      
+        <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
+      
+        <a href="/tags/UCB/" class="print-no-link">#UCB</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div></div>
+      <div>https://moyu222.github.io/2024/12/11/lecture10 Subtype Polymorphism vs. HoFs/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>moyu222</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年12月11日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/01/09/lecture12%20Command%20Line%20Programming,%20Git,%20Proj2%20Preview/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/12/11/lecture11%20Exceptions,%20Iterators,%20Object%20Methods/" title="">
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

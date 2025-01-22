@@ -19,21 +19,23 @@
   <meta name="author" content="moyu222">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="Tree Rotation2-3 tree 又一些问题包括：  &#x3D;&#x3D;维护不同的节点类型&#x3D;&#x3D; 2节点和3节点之间的&#x3D;&#x3D;节点转换&#x3D;&#x3D;。 &#x3D;&#x3D;walk up &#x3D;&#x3D;the tree to split the nodes![[Pasted image 20250113203803.png]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://moyu222.github.io/2025/01/22/hello-world/index.html">
+<meta property="og:title" content="MoyuBlog">
+<meta property="og:url" content="https://moyu222.github.io/2025/01/13/lecture18%20Red%20Black%20Trees/index.html">
 <meta property="og:site_name" content="MoyuBlog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Tree Rotation2-3 tree 又一些问题包括：  &#x3D;&#x3D;维护不同的节点类型&#x3D;&#x3D; 2节点和3节点之间的&#x3D;&#x3D;节点转换&#x3D;&#x3D;。 &#x3D;&#x3D;walk up &#x3D;&#x3D;the tree to split the nodes![[Pasted image 20250113203803.png]">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-22T15:19:02.157Z">
-<meta property="article:modified_time" content="2025-01-22T15:19:02.157Z">
+<meta property="article:published_time" content="2025-01-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-19T10:21:06.866Z">
 <meta property="article:author" content="moyu222">
+<meta property="article:tag" content="DataStructure">
+<meta property="article:tag" content="UCB">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - MoyuBlog</title>
+  <title>MoyuBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -210,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-22 23:19" pubdate>
-          2025年1月22日 晚上
+        <time datetime="2025-01-13 00:00" pubdate>
+          2025年1月13日 凌晨
         </time>
       </span>
     
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          355 字
         
       </span>
     
@@ -233,7 +235,7 @@
         
         
         
-          1 分钟
+          3 分钟
         
       </span>
     
@@ -270,24 +272,50 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h2 id="Tree-Rotation"><a href="#Tree-Rotation" class="headerlink" title="Tree Rotation"></a>Tree Rotation</h2><p>2-3 tree 又一些问题包括：</p>
+<ul>
+<li>&#x3D;&#x3D;维护不同的节点类型&#x3D;&#x3D;</li>
+<li>2节点和3节点之间的&#x3D;&#x3D;节点转换&#x3D;&#x3D;。</li>
+<li>&#x3D;&#x3D;walk up &#x3D;&#x3D;the tree to split the nodes<br>![[Pasted image 20250113203803.png]]<br>我们要改进结构，使用旋转&#x3D;&#x3D;，left and right rotation&#x3D;&#x3D;，降低height<br>![[Pasted image 20250113203919.png]]</li>
+</ul>
+<h2 id="Balancing-with-Rotation"><a href="#Balancing-with-Rotation" class="headerlink" title="Balancing with Rotation"></a>Balancing with Rotation</h2><p>comp2013学过了，简略截图<br>![[Pasted image 20250113204549.png]]</p>
+<h2 id="Red-Black-Trees"><a href="#Red-Black-Trees" class="headerlink" title="Red-Black Trees"></a>Red-Black Trees</h2><p>我们已知两种类型的search trees:</p>
+<ul>
+<li>Binary search tree: 我们可以使用rotation，但是目前还没有定义算法</li>
+<li>2-3 trees: 通过结构平衡，即不需要旋转<br>Our Goals: &#x3D;&#x3D;建立一个BST，他的结构等同于2-3tree&#x3D;&#x3D;</li>
+<li>Since 2-3 trees are balanced, so will our special BSTs</li>
+</ul>
+<h3 id="Representing-a-2-3-Tree-as-a-BST"><a href="#Representing-a-2-3-Tree-as-a-BST" class="headerlink" title="Representing a 2-3 Tree as a BST"></a>Representing a 2-3 Tree as a BST</h3><ul>
+<li>2-nodes is trival, how about 3-nodes?</li>
+<li>可以创建一个虚拟glue node，但是浪费link, code will be ugly</li>
+<li>&#x3D;&#x3D;Create “glue” links with the smaller item Off to the left&#x3D;&#x3D;<br>![[Pasted image 20250113210159.png]]<br>![[Pasted image 20250113210209.png]]</li>
+<li>commonly used in practice and 我们将胶水链接标记为“红色”</li>
+<li>&#x3D;&#x3D;Left-Leaning 左倾的 LLRB &#x3D;&#x3D;<br>![[Pasted image 20250113210345.png]]<br>![[Pasted image 20250113210400.png]]</li>
+</ul>
+<h2 id="Red-Black-Tree-Properties"><a href="#Red-Black-Tree-Properties" class="headerlink" title="Red Black Tree Properties"></a>Red Black Tree Properties</h2><h3 id="Problem-1-which-LLRBs-is-true"><a href="#Problem-1-which-LLRBs-is-true" class="headerlink" title="Problem 1 which LLRBs is true"></a>Problem 1 which LLRBs is true</h3><p>![[Pasted image 20250114032418.png]]</p>
+<ul>
+<li>对应的2-3tree应该是balanced的，&#x3D;&#x3D;而且不能有4nodes&#x3D;&#x3D;</li>
+</ul>
+<h3 id="Problem-2-The-height-of-the-LLRB"><a href="#Problem-2-The-height-of-the-LLRB" class="headerlink" title="Problem 2 The height of the LLRB"></a>Problem 2 The height of the LLRB</h3><p>![[Pasted image 20250114032601.png]]</p>
+<ul>
+<li>因此Red black tree的height也是$log(N)$</li>
+</ul>
+<h3 id="Properties"><a href="#Properties" class="headerlink" title="Properties"></a>Properties</h3><p>![[Pasted image 20250114032805.png]]</p>
+<ul>
+<li>no two red links </li>
+<li>same number of black links<br>我们如何construct LLRBs，基本思想是在像平常一样嵌入BST的同时使用rotations 去保证1-1mapping</li>
+</ul>
+<h2 id="Maintaining-1-1-Correspondence-Trough-Rotations"><a href="#Maintaining-1-1-Correspondence-Trough-Rotations" class="headerlink" title="Maintaining 1-1 Correspondence Trough Rotations"></a>Maintaining 1-1 Correspondence Trough Rotations</h2><p>![[Pasted image 20250114034547.png]]<br>&#x3D;&#x3D;我们默认每次insert value都使用red link&#x3D;&#x3D;<br>![[Pasted image 20250114034642.png]]<br>我们让每次insert都是red link 会导致出现&#x3D;&#x3D;两个red link的情况&#x3D;&#x3D;，我们暂时容许这种情况的出现，有两种情况<br>![[Pasted image 20250114034814.png]]</p>
+<p>第一种double left insert<br>![[Pasted image 20250114034915.png]]<br>![[Pasted image 20250114035143.png]]</p>
+<p>第二种child 两个red<br>![[Pasted image 20250114035033.png]]</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><p>![[Pasted image 20250114035112.png]]</p>
+<h2 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h2><p>![[Pasted image 20250114040007.png]]<br>![[Pasted image 20250114040019.png]]</p>
+<h2 id="LLRB-Runtime-and-implementation"><a href="#LLRB-Runtime-and-implementation" class="headerlink" title="LLRB Runtime and implementation"></a>LLRB Runtime and implementation</h2><p>![[Pasted image 20250114040752.png]]<br>![[Pasted image 20250114040808.png]]</p>
 
                 
               </div>
@@ -297,6 +325,15 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
+      
+        <a href="/tags/UCB/" class="print-no-link">#UCB</a>
+      
+    </div>
+  
 </div>
 
 
@@ -305,8 +342,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://moyu222.github.io/2025/01/22/hello-world/</div>
+      <div></div>
+      <div>https://moyu222.github.io/2025/01/13/lecture18 Red Black Trees/</div>
     </div>
     <div class="license-meta">
       
@@ -318,7 +355,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月22日</div>
+          <div>2025年1月13日</div>
         </div>
       
       
@@ -350,11 +387,17 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/01/13/lecture17%20B-Trees%20(2-3,%202-3-4%20Trees)/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/21/lecture22%20Graph%20Traversals%20and%20Implementation/" title="">
+                      <a href="/2025/01/13/lecture15%20Asymptotis%202/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
