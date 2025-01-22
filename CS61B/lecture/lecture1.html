@@ -1,0 +1,444 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="moyu222">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Our Frist Java ProgramsHello World12345public class HelloWorld &#123;	public static viod main(String[] args) &#123;		System.out.println(&quot;hello world&quot;);	&#125;&#125;  in java, all code must b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://moyu222.github.io/CS61B/lecture/lecture1.html">
+<meta property="og:site_name" content="MoyuBlog">
+<meta property="og:description" content="Our Frist Java ProgramsHello World12345public class HelloWorld &#123;	public static viod main(String[] args) &#123;		System.out.println(&quot;hello world&quot;);	&#125;&#125;  in java, all code must b">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-10-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-09T03:07:26.439Z">
+<meta property="article:author" content="moyu222">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="DataStructure">
+<meta property="article:tag" content="#UCB">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>page.title - MoyuBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"moyu222.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="page.title"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Our-Frist-Java-Programs"><a href="#Our-Frist-Java-Programs" class="headerlink" title="Our Frist Java Programs"></a>Our Frist Java Programs</h1><h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">HelloWorld</span> &#123;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> viod <span class="hljs-title">main</span>(<span class="hljs-params">String[] <span class="hljs-keyword">args</span></span>)</span> &#123;<br>		System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&quot;hello world&quot;</span>);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>in java, all code must be part of a class</li>
+<li>Classes are defined with public class CLASSNAME</li>
+<li>use { } to delineate beginning and ending</li>
+<li>end lines with semicolon ;</li>
+<li>code we want to run must be inside <em><strong>public static[[lecture2#Static vs. Instance Members]] void main (String[] args)</strong></em></li>
+</ul>
+<p>Java - strict requirements:</p>
+<ul>
+<li>every java file contain a class declaration(声明，不一定是类interfaces)</li>
+<li>ALL CODE live inside a class</li>
+<li>run a java program, define a main method using <em><strong>public static void main (String[] args)</strong></em></li>
+</ul>
+<h2 id="Hello-Numbers"><a href="#Hello-Numbers" class="headerlink" title="Hello Numbers"></a>Hello Numbers</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs stylus">public class HelloNumbers &#123;<br>	public static void <span class="hljs-selector-tag">main</span>(String<span class="hljs-selector-attr">[]</span> args) &#123;<br>		int <span class="hljs-attribute">x</span>;<br>		<span class="hljs-attribute">x</span> = <span class="hljs-number">0</span>;<br>		while (<span class="hljs-attribute">x</span>&lt;<span class="hljs-number">10</span>) &#123;<br>			System<span class="hljs-selector-class">.out</span><span class="hljs-selector-class">.println</span>(<span class="hljs-attribute">x</span>);<br>			<span class="hljs-attribute">x</span> = x+<span class="hljs-number">1</span>;<br>		&#125;<br>		<span class="hljs-attribute">x</span> = <span class="hljs-string">&quot;horse&quot;</span>;  <span class="hljs-comment">// doesn`t work</span><br>		String <span class="hljs-attribute">x</span> = <span class="hljs-string">&quot;hores&quot;</span>; <span class="hljs-comment">//doesn`t work</span><br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>java变量,参数，方法在被使用前，必须声明</li>
+<li>java变量必须有一个特定类型</li>
+<li>表达式也有类型 larger（5，10）+ 3 – int</li>
+<li>java变量类型不改变</li>
+<li><em>类型在代码运行前被检验</em>  - python在运行中检验类型</li>
+</ul>
+<h2 id="Larger"><a href="#Larger" class="headerlink" title="Larger"></a>Larger</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">LargerDemo</span> &#123;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">int</span> <span class="hljs-title">larger</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> x, <span class="hljs-built_in">int</span> y</span>)</span>&#123;<br>		<span class="hljs-keyword">if</span>(x&gt;y)&#123;<br>			<span class="hljs-keyword">return</span> x;<br>		&#125;<br>		<span class="hljs-keyword">return</span> y;<br>	&#125;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(<span class="hljs-params">String[] <span class="hljs-keyword">args</span></span>)</span> &#123;<br>		Systerm.<span class="hljs-keyword">out</span>.println(larger(<span class="hljs-number">-5</span>,<span class="hljs-number">10</span>));<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>函数作为类的一部分在java中被声明</li>
+<li>作为类的一部分的函数叫做“方法” method</li>
+<li>定义函数使用“public static” …</li>
+<li>函数的所有参数必须具有声明的类型，  </li>
+<li>函数的返回值必须具有声明的类型。  </li>
+<li>&#x3D;&#x3D;Java中的函数只返回一个值!&#x3D;&#x3D;</li>
+</ul>
+<h2 id="Reflections-on-Java"><a href="#Reflections-on-Java" class="headerlink" title="Reflections on Java"></a>Reflections on Java</h2><h3 id="Compilation-vs-Interpretation"><a href="#Compilation-vs-Interpretation" class="headerlink" title="Compilation vs Interpretation"></a>Compilation vs Interpretation</h3><p>![[截屏2024-10-08 12.48.01.png]]<br>why a class file?</p>
+<ul>
+<li>.class文件已进行类型检查。分布式代码更安全。  </li>
+<li>.class文件对于机器来说更容易执行。分布式代码更快。  </li>
+<li>小好处:保护你的知识产权。没有必要透露消息来源。</li>
+</ul>
+<h3 id="Reflections-on-Static-Typing"><a href="#Reflections-on-Static-Typing" class="headerlink" title="Reflections on Static Typing"></a>Reflections on Static Typing</h3><p>Good：</p>
+<ul>
+<li>easy to debug</li>
+<li>type errors 几乎不出现在用户电脑上</li>
+<li>easier to read and reason about code</li>
+<li>run efficiently</li>
+</ul>
+<p>Bad:</p>
+<ul>
+<li>冗长</li>
+<li>代码不通用 e.g. would need a second larger function to compare non-integers like 5.5.</li>
+</ul>
+<h2 id="Object-Oriented-Programming"><a href="#Object-Oriented-Programming" class="headerlink" title="Object-Oriented Programming"></a>Object-Oriented Programming</h2><ul>
+<li>a model for programing<ul>
+<li>模块化</li>
+<li>允许数据抽象: 可以在不知道如何实现的情况下与对象进行交互</li>
+</ul>
+</li>
+<li>Objects<ul>
+<li>对象将信息和相关行为捆绑在一起  </li>
+<li>每个对象都有自己的本地声明  </li>
+<li>多个对象可能都是同一类型class的实例</li>
+</ul>
+</li>
+<li>Classes<ul>
+<li>类充当其所有实例的模板  </li>
+<li>Each object is an instance of some class</li>
+</ul>
+</li>
+</ul>
+<h3 id="Constructors"><a href="#Constructors" class="headerlink" title="Constructors"></a>Constructors</h3><ul>
+<li>python  <code>__init__</code></li>
+<li><pre><code class="hljs">
+</code></pre>
+</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Car</span> &#123;<br>   <span class="hljs-keyword">public</span> <span class="hljs-type">String</span> model;<br>   <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> gas;<br>   <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Car</span><span class="hljs-params">(<span class="hljs-type">String</span> m)</span> </span>&#123;<br>       model = m;<br>       gas = <span class="hljs-number">5</span>;<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>先声明</li>
+<li>可以有额外参数m</li>
+</ul>
+<h3 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h3><ul>
+<li>Calling a method on an object might change its state</li>
+<li>The object knows how to manage its own state, based on method calls</li>
+<li>In Java: The return value of the method must have a type<br><code>public void / int</code></li>
+</ul>
+<h3 id="Java-Syntax-this-Keyword"><a href="#Java-Syntax-this-Keyword" class="headerlink" title="Java Syntax: this Keyword"></a>Java Syntax: this Keyword</h3><ul>
+<li>类似python中的self，访问对象当前实例变量或方法</li>
+<li>不必须</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">gasLeft</span>()</span> &#123;<br>   <span class="hljs-keyword">return</span> gas;<br>   <span class="hljs-comment">//return this.gas;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h3><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">Car</span>&#123;<br>	<span class="hljs-keyword">public</span> String model;<br>	<span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> gas;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">Car</span>(<span class="hljs-params">Sting m</span>)</span>&#123;<br>		model = m;<br>		gas = <span class="hljs-number">5</span>;<br>	&#125;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> viod <span class="hljs-title">drive</span>()</span>&#123;<br>		<span class="hljs-keyword">if</span> (gas&lt;<span class="hljs-number">5</span>)&#123;<br>			System.<span class="hljs-keyword">out</span>.println(<span class="hljs-string">&quot;Cannot drive&quot;</span>)<br>			<span class="hljs-keyword">return</span>;<br>		&#125;<br>		gas -= <span class="hljs-number">5</span>;<br>		System.<span class="hljs-keyword">out</span>.println(model + <span class="hljs-string">&quot;goes vroom!&quot;</span>)<br>	&#125;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">gasLeft</span>()</span>&#123;<br>		<span class="hljs-keyword">return</span> gas;<br>	&#125;<br>	<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addGas</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> amount</span>)</span>&#123;<br>		gas = gas + amount;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="Creating-and-Accessing-Objects"><a href="#Creating-and-Accessing-Objects" class="headerlink" title="Creating and Accessing Objects"></a>Creating and Accessing Objects</h3><figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs typescript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">void</span> <span class="hljs-title function_">main</span>(<span class="hljs-params"><span class="hljs-title class_">String</span>[] args</span>) &#123;<br><br>   <span class="hljs-title class_">Car</span> c1;<br><br>   <span class="hljs-title class_">Car</span> c2;<br><br>   c1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Car</span>(<span class="hljs-string">&quot;Honda Civic&quot;</span>);<br><br>   c2 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Car</span>(<span class="hljs-string">&quot;Model T&quot;</span>);<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>Use dot notation to access methods of an object</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(<span class="hljs-params">String[] <span class="hljs-keyword">args</span></span>)</span> &#123;<br><br>   ...<br><br>   System.<span class="hljs-keyword">out</span>.println(c1.gasLeft()); <span class="hljs-comment">// 5</span><br><br>  <br><br>   c1.drive(); <span class="hljs-comment">// Honda Civic goes vroom</span><br><br>   System.<span class="hljs-keyword">out</span>.println(c1.gasLeft()); <span class="hljs-comment">// 0</span><br><br>  <br><br>   c1.addGas(<span class="hljs-number">1</span>);<br><br>   System.<span class="hljs-keyword">out</span>.println(c1.gasLeft()); <span class="hljs-comment">// 1</span><br><br>  <br><br>   c1.drive(); <span class="hljs-comment">// Cannot drive</span><br><br>  <br><br>   System.<span class="hljs-keyword">out</span>.println(c2.gasLeft()); <span class="hljs-comment">// 5</span><br><br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

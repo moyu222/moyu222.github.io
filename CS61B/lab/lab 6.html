@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="moyu222">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="MakeA standard unix tool called make 两个功能  Compiling your code by using the make command Running the test suite by using make check command  使用  make compile all of the .java files in the project dire">
+<meta property="og:type" content="website">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://moyu222.github.io/CS61B/lab/lab%206.html">
+<meta property="og:site_name" content="MoyuBlog">
+<meta property="og:description" content="MakeA standard unix tool called make 两个功能  Compiling your code by using the make command Running the test suite by using make check command  使用  make compile all of the .java files in the project dire">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://sp21.datastructur.es/materials/lab/lab6/img/run.png|500">
+<meta property="og:image" content="https://sp21.datastructur.es/materials/lab/lab6/img/edit-box.png">
+<meta property="og:image" content="https://sp21.datastructur.es/materials/lab/lab6/img/remote-debug.png">
+<meta property="article:published_time" content="2025-01-16T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-22T10:48:49.965Z">
+<meta property="article:author" content="moyu222">
+<meta property="article:tag" content="lab">
+<meta property="article:tag" content="UCB">
+<meta property="article:tag" content="DataStructure">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sp21.datastructur.es/materials/lab/lab6/img/run.png|500">
+  
+  
+  
+  <title>page.title - MoyuBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"moyu222.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 60vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="page.title"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          >
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+<article class="page-content">
+  <h1 id="Make"><a href="#Make" class="headerlink" title="Make"></a>Make</h1><p>A standard unix tool called <code>make</code></p>
+<p>两个功能</p>
+<ul>
+<li>Compiling your code by using the <code>make</code> command</li>
+<li>Running the test suite by using <code>make check</code> command</li>
+</ul>
+<p>使用</p>
+<ul>
+<li><code>make</code> compile all of the <code>.java</code> files in the project directory and place the <code>.class</code> in folder</li>
+<li><code>make check</code> launches our tests and print out </li>
+<li><code>make clean</code> will remove all the <code>.class</code> files - run this after done testing for the moment and go back to editing</li>
+<li><code>check</code> <code>clean</code> are <em>make targets</em>. We can define more targets for <code>make</code> by creating a custom <code>Makefile</code></li>
+</ul>
+<hr>
+<h1 id="Files-and-Directories-in-Java"><a href="#Files-and-Directories-in-Java" class="headerlink" title="Files and Directories in Java"></a>Files and Directories in Java</h1><p>go through some file system basics.</p>
+<hr>
+<h2 id="Current-Working-Directory"><a href="#Current-Working-Directory" class="headerlink" title="Current Working Directory"></a>Current Working Directory</h2><p>The current working directory (CWD) of a java program is the directory from where you execute that java program.</p>
+<p>access the CWD from with a Java program by using <code>System.getProperty(&quot;user.dir&quot;)</code></p>
+<p>For Mac </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// file /home/Michelle/example/Example.java</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Example</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>		Sout(System.getProperty(<span class="hljs-string">&quot;user.dir&quot;</span>));<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-built_in">cd</span> /home/Michelle/Example</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">javac Example.java</span><br><span class="hljs-meta prompt_">$ </span><span class="language-bash">java Example</span><br><span class="hljs-meta prompt_">&gt;</span><span class="language-bash">&gt;&gt; /home/Michelle/example</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>IntelliJ</strong></p>
+<p>In IntelliJ, the CWD is given by the specified directory under Run &gt; Edit Configurations &gt; Working Directory.<br>Note that you may have to run <code>Main.java</code> once for this option to appear.</p>
+<p><strong>Terminal</strong>  In terminal &#x2F; Git Bash, the command <code>pwd</code> will give you the CWD.</p>
+<hr>
+<h2 id="Absolute-and-Relative-Paths"><a href="#Absolute-and-Relative-Paths" class="headerlink" title="Absolute and Relative Paths"></a>Absolute and Relative Paths</h2><p>There are two kinds of paths: absolute paths and relative paths.</p>
+<ul>
+<li>An <strong>absolute path</strong> is the location of a file or directory relative to the <strong>root</strong> of the file system.</li>
+<li>A <strong>relative path</strong> is the location of a file or directory relative to the CWD of your program.<ul>
+<li>If I were in <code>C:/Users/Michelle/</code> or <code>/home/Michelle/</code>, then the relative path to <code>Example.java</code> would be <code>example/Example.java</code>.</li>
+</ul>
+</li>
+</ul>
+<p>We use <code>~</code> as a shorthand to refer to your home directory, so when you are at <code>~/sp21-s***</code>, you are actually at <code>C:/Users/&lt;your username&gt;/sp21-s***</code> (Windows) or <code>/home/&lt;your username&gt;/sp21-s***</code> (Mac&#x2F;Linux).</p>
+<p>When using paths, <code>.</code> refers to the CWD. Therefore, the relative path <code>./example/Example.java</code> is the same as <code>example/Example.java</code>.</p>
+<hr>
+<h2 id="File-Directory-Manipulation-in-Java"><a href="#File-Directory-Manipulation-in-Java" class="headerlink" title="File &amp; Directory Manipulation in Java"></a>File &amp; Directory Manipulation in Java</h2><p>In this class, you usually will want to be doing operations on files and directories by referring to them to their relative paths.</p>
+<h3 id="Files"><a href="#Files" class="headerlink" title="Files"></a>Files</h3><p>You can make a File object in Java with the File constructor and passing the path to the file:</p>
+<p><code>File f = new File(&quot;dummy.txt&quot;);</code><br>The above path is a relative path in our CWD. You can think of this File object as a reference to the actual file <code>dummy.txt</code> - <strong>When we create the new File object, we aren’t actually creating the <code>dummy.txt</code> file itself</strong>, we are just saying, “in the future, when I do operations with <code>f</code>, I want to do these operations on <code>dummy.txt</code>”. To actually create this <code>dummy.txt</code> file, we could call</p>
+<p><code>f.createNewFile();</code><br>and then the file <code>dummy.txt</code> will actually now exist</p>
+<p><code>f.exists()</code> to check if dummy.txt already exists </p>
+<p>We hava <code>Utils.java</code> to help</p>
+<p>As an example, if you want to write a String to a file, you can do the following:</p>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs 1c">Utils.writeContents<span class="hljs-punctuation">(</span>f<span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;Hello World&quot;</span><span class="hljs-punctuation">)</span><span class="hljs-punctuation">;</span><br></code></pre></td></tr></table></figure>
+
+<p>Now <code>dummy.txt</code> would now have the text “Hello World” in it.</p>
+<h3 id="Directories"><a href="#Directories" class="headerlink" title="Directories"></a>Directories</h3><p>Directories in Java are also represent with File objects.<br><code>File d = new File(&quot;dummy&quot;)</code> </p>
+<p>Similar to files, to actually create the folder<br><code>d.mkdir();</code></p>
+<hr>
+<h1 id="Serializable"><a href="#Serializable" class="headerlink" title="Serializable"></a>Serializable</h1><p>Writing text to files is great and all, but what if we want to save some more complex state in our program? For example, what if we want to be able to save the <code>Model</code> object in 2048 so we can come back to it later? We could write a toString method to convert a <code>Model</code> to a <code>String</code> and then write that <code>String</code> to a file. However, we’d then have to also write code that is able to read the <code>String</code> and then parse it back into a <code>Model</code>. While it is certainly possible to do so, it’s tedious to write such code.</p>
+<p>Luckily, we have an alternative called <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Serialization">serialization</a> which Java has already implemented for us. &#x3D;&#x3D;Serialization is the process of translating an object to a series of bytes that can then be stored in the file&#x3D;&#x3D;. We can then <em>deserialize</em> those bytes and get the original object back in a future invocation of the program.</p>
+<p>implementing he <code>java.io.Serializable</code> interface:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> java.io.Serializable;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Model</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;<br>	...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;This interface has no methods&#x3D;&#x3D;; it simply marks its subtypes for the benefit of some special Java classes for performing I&#x2F;O on objects. For example,</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Model</span> <span class="hljs-variable">m</span> <span class="hljs-operator">=</span> ....;<br><span class="hljs-type">File</span> <span class="hljs-variable">outFile</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(saveFileName);<br><span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-type">ObjectOutputStream</span> <span class="hljs-variable">out</span> <span class="hljs-operator">=</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(outFile));<br>    out.writeObject(m);<br>    out.close();<br>&#125; <span class="hljs-keyword">catch</span> (IOException excp) &#123;<br>    ...<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>will convert <code>m</code> to a stream of bytes and store it in the file whose name is stored in <code>saveFileName</code>. The object may then be reconstructed with a code sequence such as</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java">Model m;<br><span class="hljs-type">File</span> <span class="hljs-variable">inFile</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(saveFileName);<br><span class="hljs-keyword">try</span> &#123;<br>    <span class="hljs-type">ObjectInputStream</span> <span class="hljs-variable">inp</span> <span class="hljs-operator">=</span><br>        <span class="hljs-keyword">new</span> <span class="hljs-title class_">ObjectInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(inFile));<br>    m = (Model) inp.readObject();<br>    inp.close();<br>&#125; <span class="hljs-keyword">catch</span> (IOException | ClassNotFoundException excp) &#123;<br>    ...<br>    m = <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>We can use helper functions from <code>Utils</code> class.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">Model m;<br><span class="hljs-type">File</span> <span class="hljs-variable">outFile</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(saveFileName);<br><br><span class="hljs-comment">// Serializing the Model object</span><br>writeObject(outFile, m);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">Model m;<br><span class="hljs-type">File</span> <span class="hljs-variable">inFile</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(saveFileName);<br><br><span class="hljs-comment">// Deserializing the Model object</span><br>m = readObject(inFile, Model.class);<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="Exercise-Canine-Capers"><a href="#Exercise-Canine-Capers" class="headerlink" title="Exercise: Canine Capers"></a>Exercise: Canine Capers</h1><ul>
+<li><p><code>Main.java</code>: The main method of your program. Run it with <code>java capers.Main [args]</code> to do the operations specified below. This class doesn’t have too much logic itself: rather, it serves as an “entry point” and simply knows when to call the right method in <code>CapersRepository.java</code></p>
+</li>
+<li><p><code>CapersRepository.java</code>: Handles all coordination 处理协调 among the other classes. The majority of the FIXMEs in this program are in here.</p>
+</li>
+<li><p><code>Dog.java</code>: Represents a dog that has a name, breed, and age. Contains a few FIXMEs.</p>
+</li>
+<li><p><code>Utils.java</code>: Utility functions for file operations and serialization. These are a subset of those provided with Gitlet.</p>
+</li>
+</ul>
+<hr>
+<h2 id="Main"><a href="#Main" class="headerlink" title="Main"></a>Main</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs terminate">$ java capers.Main story &quot;Once upon a time, there was a beautiful dog.&quot;<br>Once upon a time, there was a beautiful dog.<br><br>$ java capers.Main story &quot;That dog was named Fjerf.&quot;<br>Once upon a time, there was a beautiful dog.<br>That dog was named Fjerf.<br><br>$ java capers.Main story &quot;Fjerf loved to run and jump.&quot;<br>Once upon a time, there was a beautiful dog.<br>That dog was named Fjerf.<br>Fjerf loved to run and jump.<br><br>$ java capers.Main dog Mammoth &quot;German Spitz&quot; 10<br>Woof! My name is Mammoth and I am a German Spitz! I am 10 years old! Woof!<br><br>$ java capers.Main dog Qitmir Saluki 3 <br>Woof! My name is Qitmir and I am a Saluki! I am 3 years old! Woof!<br><br>$ java capers.Main birthday Qitmir<br>Woof! My name is Qitmir and I am a Saluki! I am 4 years old! Woof!<br>Happy birthday! Woof! Woof!<br><br>$ java capers.Main birthday Qitmir<br>Woof! My name is Qitmir and I am a Saluki! I am 5 years old! Woof!<br>Happy birthday! Woof! Woof!<br></code></pre></td></tr></table></figure>
+
+<p>All persistent data should be stored in a <code>.capers</code> directory in the current working directory. We prepend a <code>.</code> because files and directories preceded by a <code>.</code> are hidden in the file viewer by default. After all, we wouldn’t want the users of our Java program to care about how&#x2F;where&#x2F;if we store persistent data. </p>
+<p>Whenever you create an IntelliJ project, it creates a hidden <code>.idea</code> folder in the CWD to store all of its metadata. Similarly, whenever you initialize a Git repository, it stores all of its persistent data in a <code>.git</code> folder. You can view hidden files in terminal by typing <code>ls -a</code> instead of just <code>ls</code>.</p>
+<p>Recommended file structure (you do not have to follow this):</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ada">.capers/ <span class="hljs-comment">-- top level folder for all persistent data</span><br>    - dogs/ <span class="hljs-comment">-- folder containing all of the persistent data for dogs</span><br>    - story <span class="hljs-comment">-- file containing the current story</span><br></code></pre></td></tr></table></figure>
+
+<p>You should not create these manually, your program should create these folders and files (hint: scroll up to see how do we create a directory&#x2F;file in Java). If you want to remove all saved data from your program, just remove the <code>.capers</code> directory (NOT the <code>capers</code> directory) with <code>rm -rf .capers</code>.</p>
+<hr>
+<h2 id="Useful-Util-Functions"><a href="#Useful-Util-Functions" class="headerlink" title="Useful Util Functions"></a>Useful Util Functions</h2><ul>
+<li><p><code>static void writeContents(File file, Object... contents)</code> - writes out strings&#x2F;byte arrays to a file. The <code>...</code> allows us to use <em>variable arguments</em>, meaning we can call <code>writeContents</code> with any number of arguments. For example, we can call <code>writeContents(outFile, &quot;dog&quot;, &quot;cat&quot;, &quot;mouse&quot;)</code>, and the function <code>writeContents</code> will have access to all three objects we pass in via an array.</p>
+</li>
+<li><p><code>static String readContentsAsString(File file)</code> - reads in a file as a string</p>
+</li>
+<li><p><code>static byte[] readContents(File file)</code> - reads in a file as a byte array</p>
+</li>
+<li><p><code>static void writeObject(File file, Serializable obj)</code> - writes a serializable object to a file</p>
+</li>
+<li><p><code>static &lt;T extends Serializable&gt; T readObject(File file, Class&lt;T&gt; expectedClass)</code> - reads in a serializable object from a file. You can get a <code>Class</code> object by using <code>&lt;Class name&gt;.class</code>, (e.g. <code>Dog d = readObject(inFile, Dog.class)</code>).</p>
+</li>
+<li><p><code>static File join(File first, String... others)</code> - joins together strings or files into a path. E.g. <code>Utils.join(&quot;.capers&quot;, &quot;dogs&quot;)</code> would give you a <code>File</code>object with the path of “.capers&#x2F;dogs”, and <code>Utils.join(&quot;.capers&quot;, &quot;dogs&quot;, &quot;shitzus&quot;)</code> would give you a <code>File</code> object with the path of <code>&quot;.capers/dogs/shitzus&quot;</code>. You should <strong>not</strong> create files by String concatenation! This can create weird bugs depending on the system you are running.</p>
+</li>
+</ul>
+<hr>
+<h2 id="Suggested-Order-of-completion"><a href="#Suggested-Order-of-completion" class="headerlink" title="Suggested Order of completion"></a>Suggested Order of completion</h2><ul>
+<li><input checked="" disabled="" type="checkbox"> Fill out <code>CAPERS_FOLDER</code> in <code>CapersRepository.java</code>, then <code>DOG_FOLDER</code> in <code>Dog.java</code>, and then <code>setUpPersistence</code> in <code>CapersRepository.java</code>.</li>
+<li><input checked="" disabled="" type="checkbox"> Fill out the <code>main</code> method in <code>Main.java</code>. This should consist mostly of calling other methods from <code>CapersRepository</code>.</li>
+<li><input checked="" disabled="" type="checkbox"> Fill out <code>writeStory</code> in <code>CapersRepository</code>.java. The story command should now work.</li>
+<li><input checked="" disabled="" type="checkbox"> Try using the story command manually and verify that it is behaving properly.</li>
+<li><input checked="" disabled="" type="checkbox"> Fill out <code>saveDog</code> and then <code>fromFile</code> in <code>Dog.java</code>. You will also need to address the <code>TODO</code> at the top of <code>Dog.java</code>. Remember dog names are unique!</li>
+<li><input checked="" disabled="" type="checkbox"> Fill out <code>makeDog</code> and <code>celebrateBirthday</code> in <code>CapersRepository.java</code> using methods in <code>Dog.java</code>. You will find the <code>haveBirthday</code> method in the Dog class useful. The dog and birthday commands should now work.</li>
+<li><input checked="" disabled="" type="checkbox"> Try using the dog and birthday commands manually and verify that they are working properly.</li>
+<li><input checked="" disabled="" type="checkbox"> Run make check and verify that you code passes all the tests. If you are failing tests and don’t know why, see the debugging section later in this lab.</li>
+</ul>
+<p>Each <code>TODO</code> should take at most around 8 lines, but many are fewer.</p>
+<hr>
+<h1 id="Testing"><a href="#Testing" class="headerlink" title="Testing"></a>Testing</h1><p>As discussed earlier, tests are run using the <code>check</code> make target, i.e.:</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs crystal"><span class="hljs-variable">$ </span>make check<br></code></pre></td></tr></table></figure>
+
+<p>Recall we said we aren’t using JUnit tests for Capers nor Gitlet. A single test is represented as a file with the file extension <code>.in</code>: all of our tests are in the <code>lab6/testing/our</code> directory. Here is what the <code>test02-two-part-story.in</code> looks like:</p>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs node-repl"># Two uses of the `story` command<br><span class="hljs-meta prompt_">&gt;</span> <span class="language-javascript">story <span class="hljs-string">&quot;Hello&quot;</span></span><br>Hello<br>&lt;&lt;&lt;<br><span class="hljs-meta prompt_">&gt;</span> <span class="language-javascript">story <span class="hljs-string">&quot;World&quot;</span></span><br>Hello<br>World<br>&lt;&lt;&lt;<br></code></pre></td></tr></table></figure>
+
+<p>The first line is a comment telling us what the test does. If you’re failing a test, you should read the top line to get a sense of what the test is doing.</p>
+<p>The next 3 lines make up a section corresponding to a single execution to the program:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vim">&gt; [<span class="hljs-keyword">args</span> given <span class="hljs-keyword">to</span> capersMain.main()]<br>[<span class="hljs-keyword">first</span> <span class="hljs-built_in">line</span> of expected output]<br>[second <span class="hljs-built_in">line</span> of expected output]<br>[...]<br>&lt;&lt;&lt;<br></code></pre></td></tr></table></figure>
+
+<p>So we see that all of the text on the same line as the <code>&gt;</code> corresponds to the command given to <code>capers.Main.main()</code>, and the next lines up until the <code>&lt;&lt;&lt;</code> are the expected output.</p>
+<p>So that first section is saying “If I run the program with args <code>story &quot;Hello&quot;</code>, then the program should output <code>Hello</code>.” If your program doesn’t have the exact same output, then our tests will fail and tell you your output differs.</p>
+<p>&#x3D;&#x3D;We call these <em>integration tests</em>.&#x3D;&#x3D; As opposed to <em>unit tests</em>, integration tests test many things in cohesion. A (good) unit test will only test one specific portion of your program: in our integration tests, we test multiple things.</p>
+<hr>
+<h1 id="Debugging-https-sp21-datastructur-es-materials-lab-lab6-lab6"><a href="#Debugging-https-sp21-datastructur-es-materials-lab-lab6-lab6" class="headerlink" title="Debugging [[https://sp21.datastructur.es/materials/lab/lab6/lab6]]"></a>Debugging [[<a target="_blank" rel="noopener" href="https://sp21.datastructur.es/materials/lab/lab6/lab6]]">https://sp21.datastructur.es/materials/lab/lab6/lab6]]</a></h1><p>This might seem impossible at first glance, since we’re running everything from the command line. However, IntelliJ provides a &#x3D;&#x3D;feature called “remote JVM debugging” that will allow you to add breakpoints that trigger during our integration tests.&#x3D;&#x3D;</p>
+<p>&#x3D;&#x3D;To debug this integration test, we first need to let IntelliJ know that we want to debug remotely&#x3D;&#x3D;. Navigate to your IntelliJ and open your <code>lab6</code> project if you don’t have it open already. At the top, go to “Run” -&gt; “Run”:</p>
+<p><img src="https://sp21.datastructur.es/materials/lab/lab6/img/run.png|500" srcset="/img/loading.gif" lazyload alt="Run to Run"></p>
+<p>You’ll get a box asking you to Edit Configurations that will look like the below:</p>
+<p><img src="https://sp21.datastructur.es/materials/lab/lab6/img/edit-box.png" srcset="/img/loading.gif" lazyload alt="Edit Box"></p>
+<p>Yours might have more or less of those boxes with other names if you tried running a class within IntelliJ already. &#x3D;&#x3D;If that’s the case, just click the one that says “Edit Configurations&#x3D;&#x3D;”</p>
+<p>&#x3D;&#x3D;In this box, you’ll want to hit the “+” button in the top left corner and select “Remote JVM Debug.&#x3D;&#x3D;” It should now look like this:</p>
+<p><img src="https://sp21.datastructur.es/materials/lab/lab6/img/remote-debug.png" srcset="/img/loading.gif" lazyload alt="Remote Debug"><br>We just need the default settings. You should add a descriptive name in the top box, perhaps “Capers Remote Debug”. After you add a name, go ahead and hit “Apply” and then exit from this screen. <strong>Before we leave IntelliJ</strong>, &#x3D;&#x3D;place a breakpoint in the <code>main</code> method of the <code>Main</code> class so we can actually debug. Make sure this breakpoint will actually be reached, so just put it on the first line of the <code>main</code> method&#x3D;&#x3D;.</p>
+<p>Now you’ll navigate to the <code>testing</code> directory within your terminal. The script that will connect to the IntelliJ JVM is <code>runner.py</code>: use the following command to launch the testing script:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">python3</span> runner.<span class="hljs-keyword">py</span> --<span class="hljs-keyword">debug</span> our/test02-two-part-story.in<br></code></pre></td></tr></table></figure>
+
+<p>If you wanted to run a different test, then simply put a different <code>.in</code> file. If you’d like the <code>.capers</code> folder to stay after the test is completed to investigate its contents, then use the <code>--keep</code> flag:</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stylus">python3 runner<span class="hljs-selector-class">.py</span> <span class="hljs-attr">--keep</span> <span class="hljs-attr">--debug</span> our/test02-two-part-story.<span class="hljs-keyword">in</span><br></code></pre></td></tr></table></figure>
+
+<p>&#x3D;&#x3D;For our example it doesn’t matter what you do; we’ve just included it in case you’d like to take a look around. By default, the <code>.capers</code> that is generated is deleted.&#x3D;&#x3D;</p>
+<p>If you see an error message, then it means you are either not in the <code>testing</code> directory, or your <code>REPO_DIR</code> environment variable isn’t set correctly. Check those two things, and if you’re still confused then ask a TA.</p>
+<p>Otherwise, you should be ready to debug! You’ll see something like this:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs vim">   ============================================================================<br>  |                   ~~~~~  You are in <span class="hljs-keyword">debug</span> <span class="hljs-keyword">mode</span>  ~~~~~                      |<br>  |   In this <span class="hljs-keyword">mode</span>, you will <span class="hljs-keyword">be</span> shown each <span class="hljs-keyword">command</span> from the test case.         |<br>  |                                                                            |<br>  |   There are three commands:                                                |<br>  |                                                                            |<br>  |   <span class="hljs-number">1</span>. <span class="hljs-string">&#x27;n&#x27;</span> - <span class="hljs-built_in">type</span> in <span class="hljs-string">&#x27;n&#x27;</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">next</span> <span class="hljs-keyword">command</span> without debugging the     |<br>  |            current one (analogous <span class="hljs-keyword">to</span> <span class="hljs-string">&quot;Step Over&quot;</span> in IntelliJ).             |<br>  |                                                                            |<br>  |   <span class="hljs-number">2</span>. <span class="hljs-string">&#x27;s&#x27;</span> - <span class="hljs-built_in">type</span> in <span class="hljs-string">&#x27;s&#x27;</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">debug</span> the current <span class="hljs-keyword">command</span> (analogous <span class="hljs-keyword">to</span>          |<br>  |            <span class="hljs-string">&quot;Step Into&quot;</span> in IntelliJ). Make sure <span class="hljs-keyword">to</span> <span class="hljs-keyword">set</span> breakpoints!         |<br>  |                                                                            |<br>  |   <span class="hljs-number">3</span>. <span class="hljs-string">&#x27;q&#x27;</span> - <span class="hljs-built_in">type</span> in <span class="hljs-string">&#x27;q&#x27;</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">quit</span> <span class="hljs-built_in">and</span> <span class="hljs-keyword">stop</span> debugging. If you had the `--keep` |<br>  |            flag, then your directory state will <span class="hljs-keyword">be</span> saved <span class="hljs-built_in">and</span> you can       |<br>  |            investigate it.                                                 |<br>   ============================================================================<br><br>test02-two-part-story: <br>&gt;&gt;&gt; capers story <span class="hljs-string">&quot;Hello&quot;</span><br>&gt;<br><br></code></pre></td></tr></table></figure>
+
+<p>The top box contains helpful tips. What we see next is the name of the <code>.in</code> file we’re debugging, then a series of lines that begin with <code>&gt;&gt;&gt;</code> and <code>&gt;</code>.</p>
+<p>Lines that begin with <code>&gt;&gt;&gt;</code> are the capers commands that will be run on your <code>Main</code> class, i.e. a specific execution of your program. These correspond to the commands we saw in the <code>.in</code> file on the right side of the <code>&gt;</code>.</p>
+<p>Lines that begin with <code>&gt;</code> are for you to enter debug commands on. The 3 commands are listed in the helpful box.</p>
+<p>Remember that each input file will list multiple commands and therefore multiple executions of our program. We need to first figure out what command is the culprit.</p>
+<p>Type in the single character “n” (short for “next”) to execute this command without debugging it. You can think of it as bringing you to the next command.</p>
+<p>One of these will error: either your code will produce a runtime error, or your output wasn’t the same. For example:</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs vim">   ============================================================================<br>  |                   ~~~~~  You are in <span class="hljs-keyword">debug</span> <span class="hljs-keyword">mode</span>  ~~~~~                      |<br>  |   In this <span class="hljs-keyword">mode</span>, you will <span class="hljs-keyword">be</span> shown each <span class="hljs-keyword">command</span> from the test case.         |<br>  |                                                                            |<br>  |   There are three commands:                                                |<br>  |                                                                            |<br>  |   <span class="hljs-number">1</span>. <span class="hljs-string">&#x27;n&#x27;</span> - <span class="hljs-built_in">type</span> in <span class="hljs-string">&#x27;n&#x27;</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">go</span> <span class="hljs-keyword">to</span> the <span class="hljs-keyword">next</span> <span class="hljs-keyword">command</span> without debugging the     |<br>  |            current one (analogous <span class="hljs-keyword">to</span> <span class="hljs-string">&quot;Step Over&quot;</span> in IntelliJ).             |<br>  |                                                                            |<br>  |   <span class="hljs-number">2</span>. <span class="hljs-string">&#x27;s&#x27;</span> - <span class="hljs-built_in">type</span> in <span class="hljs-string">&#x27;s&#x27;</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">debug</span> the current <span class="hljs-keyword">command</span> (analogous <span class="hljs-keyword">to</span>          |<br>  |            <span class="hljs-string">&quot;Step Into&quot;</span> in IntelliJ). Make sure <span class="hljs-keyword">to</span> <span class="hljs-keyword">set</span> breakpoints!         |<br>  |                                                                            |<br>  |   <span class="hljs-number">3</span>. <span class="hljs-string">&#x27;q&#x27;</span> - <span class="hljs-built_in">type</span> in <span class="hljs-string">&#x27;q&#x27;</span> <span class="hljs-keyword">to</span> <span class="hljs-keyword">quit</span> <span class="hljs-built_in">and</span> <span class="hljs-keyword">stop</span> debugging. If you had the `--keep` |<br>  |            flag, then your directory state will <span class="hljs-keyword">be</span> saved <span class="hljs-built_in">and</span> you can       |<br>  |            investigate it.                                                 |<br>   ============================================================================<br><br>test02-two-part-story: <br>&gt;&gt;&gt; capers story <span class="hljs-string">&quot;Hello&quot;</span><br>&gt; n<br>ERROR (incorrect output)<br><br>Directory state saved in test02-two-part-story_0<br><br>Ran <span class="hljs-number">1</span> tests. <span class="hljs-number">0</span> passed.<br><br></code></pre></td></tr></table></figure>
+
+<p>For us, it was our first command. Notice also it tells us <code>Directory state saved in test02-two-part-story_0</code> because we had the <code>--keep</code> flag enabled. We could now investigate that directory to see what happened. If we debugged again with the <code>--keep</code> flag on the same test, we’ll get a new directory <code>Directory state saved in test02-two-part-story_1</code> and so on.</p>
+<p>&#x3D;&#x3D;Once you’ve found the command that errors, do it all again except now you can hit “s” (short for “step”) to “step into” that command,&#x3D;&#x3D; so to speak. Really what happens is the IntelliJ JVM waits for our script to start and then attaches itself to that execution&#x3D;&#x3D;. So after you press “s”, you should hit the “Debug” button in IntelliJ. Make sure in the top right the configuration is set to the name of the remote JVM config you added earlier (this is why it is helpful to give it a good name).&#x3D;&#x3D;</p>
+<p>This will stop your program at wherever your breakpoint was as it’s trying to run that command you hit “s” on. &#x3D;&#x3D;Now you can use your normal debugging techniques to step around and see if you’re improperly reading&#x2F;writing some data or some other mistake&#x3D;&#x3D;.</p>
+
+
+  
+
+</article>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
