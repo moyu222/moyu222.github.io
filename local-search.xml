@@ -40,9 +40,9 @@
     
     <tags>
       
-      <tag>DataStructure</tag>
-      
       <tag>UCB</tag>
+      
+      <tag>DataStructure</tag>
       
     </tags>
     
@@ -61,9 +61,9 @@
     
     <tags>
       
-      <tag>DataStructure</tag>
-      
       <tag>UCB</tag>
+      
+      <tag>DataStructure</tag>
       
     </tags>
     
@@ -82,9 +82,9 @@
     
     <tags>
       
-      <tag>DataStructure</tag>
-      
       <tag>UCB</tag>
+      
+      <tag>DataStructure</tag>
       
     </tags>
     
@@ -103,30 +103,9 @@
     
     <tags>
       
-      <tag>DataStructure</tag>
-      
       <tag>UCB</tag>
       
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>cs61b_lecture_15</title>
-    <link href="/2025/01/13/15/"/>
-    <url>/2025/01/13/15/</url>
-    
-    <content type="html"><![CDATA[<p>本节简单分析一些算法的时间复杂度</p><ul><li>for -for.   n</li><li>recursion.   2^n</li><li>binary search  logn</li><li>selection sort n^2</li><li>merge sort.   nlogn<br>不做详细笔记了</li></ul><p><strong>Runtime Analysis.</strong><br>Understanding the runtime of code involves deep thought. It amounts to asking: “How long does it take to do stuff?”, where stuff can be any conceivable computational process whatsoever. It simply cannot be done mechanically, at least for non-trivial problems. As an example, a pair of nested for loops does NOT mean Θ(N^2) runtime as we saw in lecture.</p><p><strong>Cost Model.</strong> <br>As an anchor for your thinking, recall the idea of a “cost model” from last lecture. Pick an operation and count them. You want the one whose count has the highest order of growth as a function of the input size.</p><p><strong>Important Sums.</strong> This is not a math class so we’ll be a bit sloppy, but the two key sums that you should know are that:</p><ul><li>1+2+3+…+N∈Θ(N^2)</li><li>1+2+4+8+…+N∈Θ(N)</li></ul><p><strong>Practice.</strong> <br>The only way to learn this is through plenty of practice. Make sure to work through the problems in lecture and below when you have some time.</p>]]></content>
-    
-    
-    
-    <tags>
-      
       <tag>DataStructure</tag>
-      
-      <tag>UCB</tag>
       
     </tags>
     
@@ -145,9 +124,9 @@
     
     <tags>
       
-      <tag>DataStructure</tag>
-      
       <tag>UCB</tag>
+      
+      <tag>DataStructure</tag>
       
     </tags>
     
@@ -166,9 +145,9 @@
     
     <tags>
       
-      <tag>DataStructure</tag>
-      
       <tag>UCB</tag>
+      
+      <tag>DataStructure</tag>
       
     </tags>
     
@@ -187,9 +166,30 @@
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>DataStructure</tag>
       
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>cs61b_lecture_15</title>
+    <link href="/2025/01/13/15/"/>
+    <url>/2025/01/13/15/</url>
+    
+    <content type="html"><![CDATA[<p>本节简单分析一些算法的时间复杂度</p><ul><li>for -for.   n</li><li>recursion.   2^n</li><li>binary search  logn</li><li>selection sort n^2</li><li>merge sort.   nlogn<br>不做详细笔记了</li></ul><p><strong>Runtime Analysis.</strong><br>Understanding the runtime of code involves deep thought. It amounts to asking: “How long does it take to do stuff?”, where stuff can be any conceivable computational process whatsoever. It simply cannot be done mechanically, at least for non-trivial problems. As an example, a pair of nested for loops does NOT mean Θ(N^2) runtime as we saw in lecture.</p><p><strong>Cost Model.</strong> <br>As an anchor for your thinking, recall the idea of a “cost model” from last lecture. Pick an operation and count them. You want the one whose count has the highest order of growth as a function of the input size.</p><p><strong>Important Sums.</strong> This is not a math class so we’ll be a bit sloppy, but the two key sums that you should know are that:</p><ul><li>1+2+3+…+N∈Θ(N^2)</li><li>1+2+4+8+…+N∈Θ(N)</li></ul><p><strong>Practice.</strong> <br>The only way to learn this is through plenty of practice. Make sure to work through the problems in lecture and below when you have some time.</p>]]></content>
+    
+    
+    
+    <tags>
+      
       <tag>UCB</tag>
+      
+      <tag>DataStructure</tag>
       
     </tags>
     
@@ -208,9 +208,9 @@
     
     <tags>
       
-      <tag>DataStructure</tag>
-      
       <tag>UCB</tag>
+      
+      <tag>DataStructure</tag>
       
     </tags>
     
@@ -229,9 +229,9 @@
     
     <tags>
       
-      <tag>DataStructure</tag>
-      
       <tag>UCB</tag>
+      
+      <tag>DataStructure</tag>
       
     </tags>
     
@@ -250,30 +250,7 @@
     
     <tags>
       
-      <tag>UCB</tag>
-      
       <tag>#DataStructure</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>cs61b_lecture_10</title>
-    <link href="/2024/12/11/10/"/>
-    <url>/2024/12/11/10/</url>
-    
-    <content type="html"><![CDATA[<h2 id="Dynamic-Method-Selection-Puzzle"><a href="#Dynamic-Method-Selection-Puzzle" class="headerlink" title="Dynamic Method Selection Puzzle"></a>Dynamic Method Selection Puzzle</h2><p>[[lecture10 Subtype Polymorphism vs. HoFs]]<br>[[lecture10 Subtype Polymorphism vs. HoFs#Comparables|comparator]]</p><blockquote><p>[!summary]<br>The rules:</p><ul><li>Compiler allows memory box to hold any subtype.</li><li>Compiler allows calls based on static type.</li><li>Overridden non-static methods are selected at run time based on dynamic type.</li><li>Everything else is based on static type,including overloaded methods</li></ul></blockquote><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">Object o3 <span class="hljs-operator">=</span> (Dog) o2<span class="hljs-comment">;</span><br>o3.bark()<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><blockquote><p>[!bug] </p><ul><li>Object do not have bark method </li><li>Based on rule 2</li></ul></blockquote><h2 id="Subtype-polymorphic-子类型多态性"><a href="#Subtype-polymorphic-子类型多态性" class="headerlink" title="Subtype polymorphic   子类型多态性"></a>Subtype polymorphic   子类型多态性</h2><ul><li>polymorphic: “providing a single interface to entities of different types”</li></ul><p>多个子类型使用同一个接口，在运行过程中根据不同的动态类型选择不同的方法，体现面向对象的思维。</p><h3 id="Subtype-polymorphic-vs-Explicit-Higher-Order-functions"><a href="#Subtype-polymorphic-vs-Explicit-Higher-Order-functions" class="headerlink" title="Subtype polymorphic vs. Explicit Higher Order functions"></a>Subtype polymorphic vs. Explicit Higher Order functions</h3><p>Explicit HoF Approach</p><figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">def print_larger(<span class="hljs-variable language_">x</span>, <span class="hljs-variable language_">y</span>, compare, stringify):<br><span class="hljs-keyword">if</span> compare(<span class="hljs-variable language_">x</span>, <span class="hljs-variable language_">y</span>):<br><span class="hljs-keyword">return</span> stringify(<span class="hljs-variable language_">x</span>)<br><span class="hljs-keyword">return</span> stringify(<span class="hljs-variable language_">y</span>)<br></code></pre></td></tr></table></figure><p>Subtype Polymorphism Approach</p><figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">def print_larger(<span class="hljs-variable language_">x</span>, <span class="hljs-variable language_">y</span>):<br><span class="hljs-keyword">if</span> <span class="hljs-variable language_">x</span>.largerThan(<span class="hljs-variable language_">y</span>):<br><span class="hljs-keyword">return</span> <span class="hljs-variable language_">x</span>.str()<br><span class="hljs-keyword">return</span> <span class="hljs-variable language_">y</span>.str()<br></code></pre></td></tr></table></figure><p>根据x，y不同的类型调用统一接口的largerThan的不同方法。面向对象</p><h2 id="DIY-Comparison"><a href="#DIY-Comparison" class="headerlink" title="DIY Comparison"></a>DIY Comparison</h2><p>Goal: The One True Max function</p><p><img src="/2024/12/11/10/Pasted%20image%2020241211142933.png"></p><p><img src="/2024/12/11/10/Pasted%20image%2020241211143356.png"></p><ul><li>create an interface to make all its subtype are comparable.</li><li>Make One True Max function use same name method – &gt; dynamic selection.</li><li>use Max class in terms of this interface.</li></ul><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-symbol">Ourcomparable</span> &#123;<br><span class="hljs-built_in">int</span> compareTo(Object obj);<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">OurComparable</span> &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compareTo(Object obj)&#123;<br><span class="hljs-comment">/** Cast may cause runtime errors</span><br><span class="hljs-comment">Dog uddaDog = (Dog) obj:</span><br><span class="hljs-comment">return this.size - uddadog.size;</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-comment">&#125;...</span><br></code></pre></td></tr></table></figure><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs perl">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Maximizer</span> </span>&#123;<br>public static OurComparable max(OurComparable[] a) &#123;<br>...<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">Dog</span>[] dogs = new Dog[] &#123;<span class="hljs-built_in">d1</span>, <span class="hljs-built_in">d2</span>, <span class="hljs-built_in">d3</span>&#125;<span class="hljs-comment">;</span><br><span class="hljs-symbol">Dog</span> largest = (Dog) Maximizer.max(dogs)<br></code></pre></td></tr></table></figure><blockquote><p>[!success] </p><ul><li>No need for array maximization code in every custom type (i.e. no Dog.maxDog(Dog[]) function required).</li><li>Code that operates on multiple types (mostly) gracefully</li></ul></blockquote><h2 id="Comparables"><a href="#Comparables" class="headerlink" title="Comparables"></a>Comparables</h2><blockquote><p>[!warning] Two issues:</p><ul><li>Awkward casting to&#x2F;from Objects.</li><li>We made it up.</li><li>很多类没有实现OurComparable例如String等</li><li>没有类或函数使用OurComparable</li></ul></blockquote><p>我们要使用一个内置的comparable接口 built-in Comparable interface.</p><ul><li>use generics</li></ul><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">T</span>&gt; &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compareTo(T obj);<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compareTo(Dog uddaDog) &#123;<br><span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.size - uddadog.size;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><blockquote><p>[!success] Advantages:</p><ul><li>Lots of built in classes implement Comparable</li><li>Lots of libraries use the Comparable interface</li><li>Avoids need for casts.</li></ul></blockquote><h2 id="Comparators"><a href="#Comparators" class="headerlink" title="Comparators"></a>Comparators</h2><blockquote><p>[!hint] </p><ul><li>use different way to sort or compare somethings</li><li>In this case, we can use the size of the dogs, or we can use the name of dogs like a, b, c…</li><li>&#x3D;&#x3D;so we use comparators&#x3D;&#x3D;</li></ul></blockquote><figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">def print_larger(T <span class="hljs-variable language_">x</span>, T <span class="hljs-variable language_">y</span>, comparator&lt;T&gt; c):<br><span class="hljs-keyword">if</span> c.compare(<span class="hljs-variable language_">x</span>,<span class="hljs-variable language_">y</span>):<br><span class="hljs-keyword">return</span> <span class="hljs-variable language_">x</span>.str();<br><span class="hljs-keyword">return</span> <span class="hljs-variable language_">y</span>.str();<br></code></pre></td></tr></table></figure><p><img src="/2024/12/11/10/Pasted%20image%2020241211151306.png"></p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br><span class="hljs-keyword">private</span> String name;<br><span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> size;<br><br><span class="hljs-keyword">public</span> static <span class="hljs-keyword">class</span> <span class="hljs-symbol">NameComparator</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparator</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compare(Dog d1, Dog d2) &#123;<br><span class="hljs-keyword">return</span> d1.name.compareTo(d2.name);<br>&#125;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>more formal way</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">Dog</span>&gt;&#123;<br><br><br><span class="hljs-keyword">private</span> static <span class="hljs-keyword">class</span> <span class="hljs-symbol">NameComparator</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparator</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compare(Dog d1, Dog d2) &#123;<br><span class="hljs-keyword">return</span> d1.name.compareTo(d2.name);<br>&#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> static Comparator&lt;Dog&gt; getNameComparator() &#123;<br><span class="hljs-keyword">return</span> new Namecomparator();<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs perl">immport java.util.Comparator<br>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DogLauncher</span> </span>&#123;<br>Comparator&lt;Dog&gt; nc = Dog.getNameComparator();<br><span class="hljs-keyword">if</span> (nc,compare(d1, d2) &gt; <span class="hljs-number">0</span>) &#123;<br>d1.bark()<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>d3.bark()<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p><img src="/2024/12/11/10/Pasted%20image%2020241211153720.png"></p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>java</tag>
-      
-      <tag>DataStructure</tag>
       
       <tag>UCB</tag>
       
@@ -294,11 +271,11 @@
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>java</tag>
       
       <tag>DataStructure</tag>
-      
-      <tag>UCB</tag>
       
     </tags>
     
@@ -307,21 +284,21 @@
   
   
   <entry>
-    <title>cs61b_lecture_9</title>
-    <link href="/2024/12/10/9/"/>
-    <url>/2024/12/10/9/</url>
+    <title>cs61b_lecture_10</title>
+    <link href="/2024/12/11/10/"/>
+    <url>/2024/12/11/10/</url>
     
-    <content type="html"><![CDATA[<h2 id="Implementation-Inheritance-Extends"><a href="#Implementation-Inheritance-Extends" class="headerlink" title="Implementation Inheritance: Extends"></a>Implementation Inheritance: Extends</h2><p>当一个类是一个接口的下位次，我们使用implement来实现继承<br>当他是一个类的下位次，我们使用extend完成继承</p><p><img src="/2024/12/10/9/Pasted%20image%2020241210172508.png"></p><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scala">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RotatingSLList&lt;Blorp&gt;</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SLList&lt;Blorp&gt;</span> </span>&#123;<br>public void rotateRight() &#123;<br><span class="hljs-type">Blorp</span> oldBack = removeLast();<br>addFirst(oldBack);<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>inherits all members of SLList:</p><ul><li>All instance and static variables</li><li>All methods</li><li>All nested classes<br>&#x3D;&#x3D;Constructors&#x3D;&#x3D; are not inherited</li></ul><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">VengefulSLList</span>&lt;<span class="hljs-title">Item</span>&gt; <span class="hljs-title">extends</span> <span class="hljs-title">SLList</span>&lt;<span class="hljs-title">Item</span>&gt; &#123;<br><span class="hljs-keyword">private</span> SLList&lt;Item&gt; deletedItems;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">VengefulSLList</span>()</span> &#123;<br>delectedItems = <span class="hljs-keyword">new</span> SLList&lt;Item&gt;();<br>&#125;<br><br>@Override<br><span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">removeLast</span>()</span> &#123;<br>Item oldBlack = super.removeLast(); <br><span class="hljs-meta"># call Superclass`s version of removeLast()</span><br><br>deletedItems.addLast(oldBack);<br><span class="hljs-keyword">return</span> oldBack;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printLostItems</span>()</span> &#123;<br>deletedItems.print();<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>Super.method</strong><br>calls superclass versions of method<br>Java &#x3D;&#x3D;not allows super.super&#x3D;&#x3D;</p><h2 id="Constructor-Behaviors"><a href="#Constructor-Behaviors" class="headerlink" title="Constructor Behaviors"></a>Constructor Behaviors</h2><p><em>ALL Constructors must start with a call to one of the super class’s Constructors</em></p><p><em>ONE OF ?</em> :<br><code>super(x)</code>  <code>super()</code><br>use a super Constructor with parameters</p><ul><li>implicit call - super() –<strong>If you don’t explicitly call the constructor, Java will automatically do it for you.</strong></li></ul><p>&#x3D;&#x3D;every type in java is a descendant of the Object class&#x3D;&#x3D; implicitly<br>&#x3D;&#x3D;Is a NOT Has a&#x3D;&#x3D;</p><h2 id="Encapsulation-封装"><a href="#Encapsulation-封装" class="headerlink" title="Encapsulation 封装"></a>Encapsulation 封装</h2><h3 id="Complexity-The-Enemy-How-to-mange-it"><a href="#Complexity-The-Enemy-How-to-mange-it" class="headerlink" title="Complexity The Enemy : How to mange it"></a>Complexity The Enemy : How to mange it</h3><ul><li>Hierarchical abstraction.<ul><li>Create &#x3D;&#x3D;layers of abstraction&#x3D;&#x3D;, with clear abstraction barriers!</li></ul></li><li>“Design for change” (D. Parnas)<ul><li>Organize program around objects.</li><li>Let objects decide how things are done.</li><li>&#x3D;&#x3D;Hide information&#x3D;&#x3D; others don’t need.</li></ul></li></ul><p><strong>A module is said to be encapsulated if its implementation is completely hidden, and it can be accessed only through a documented interface.</strong></p><h3 id="Implementation-Inheritance-Breaks-Encapsulation"><a href="#Implementation-Inheritance-Breaks-Encapsulation" class="headerlink" title="Implementation Inheritance Breaks Encapsulation"></a>Implementation Inheritance Breaks Encapsulation</h3><p><img src="/2024/12/10/9/Pasted%20image%2020241210175319.png"></p><h2 id="Dynamic-Method-Selection-And-Type-Checking"><a href="#Dynamic-Method-Selection-And-Type-Checking" class="headerlink" title="Dynamic Method Selection And Type Checking"></a>Dynamic Method Selection And Type Checking</h2><p>[<a href="https://youtu.be/xGC4bVnTXcA?si=--fOJLFfDFO8lOVs%5D">https://youtu.be/xGC4bVnTXcA?si=--fOJLFfDFO8lOVs]</a></p><p>动态方法选择发生在动态方法集中，只在重写override情况发生<br>If overriden, decide which method to call based on run-time type</p><p>类型检查发生在编译部分，编译器检查对象的静态类型<br><img src="/2024/12/10/9/Pasted%20image%2020241210180006.png"></p><blockquote><p>[!note]<br>Expressions have compile-time types:</p><ul><li>An expression using new keyword</li><li>Methods have compile-time type</li></ul></blockquote><p><img src="/2024/12/10/9/Pasted%20image%2020241210181248.png"><br><img src="/2024/12/10/9/Pasted%20image%2020241210181300.png"></p><h2 id="Casting"><a href="#Casting" class="headerlink" title="Casting"></a>Casting</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lisp">Poodle largerPoodle = (<span class="hljs-name">Poodle</span>) maxDog(<span class="hljs-name">frank</span>, frankSr)<br></code></pre></td></tr></table></figure><blockquote><p>[!danger]<br>get a ClassCastException at runtime.</p></blockquote><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">Poodle frank</span>  = new Poodle(<span class="hljs-string">&quot;Frank&quot;</span>, 5);<br><span class="hljs-attribute">Malamute frankSr</span> = new Malamute(<span class="hljs-string">&quot;Frank Sr.&quot;</span>, 100);<br><span class="hljs-attribute">Poodle largerPoodle</span> = (Poodle) maxDog(frank, frankSr);<br></code></pre></td></tr></table></figure><h2 id="Higher-Order-function"><a href="#Higher-Order-function" class="headerlink" title="Higher Order function"></a>Higher Order function</h2><p><img src="/2024/12/10/9/Pasted%20image%2020241210181902.png"></p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">IntUnaryFunction</span> &#123;<br><span class="hljs-function"><span class="hljs-built_in">int</span> <span class="hljs-title">apply</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> x</span>)</span><br><span class="hljs-function">&#125;</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> TenX implements IntUnaryFuncton</span> &#123;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">apply</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> x</span>)</span> &#123;<br><span class="hljs-keyword">return</span> <span class="hljs-number">10</span> * x;<br>&#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">HoFDemo</span> &#123;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">int</span> <span class="hljs-title">do_twice</span>(<span class="hljs-params">IntUnaryFunction f, <span class="hljs-built_in">int</span> x</span>)</span> &#123;<br><span class="hljs-keyword">return</span> f.apply(f.apply(x))<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(<span class="hljs-params">String[] <span class="hljs-keyword">args</span></span>)</span> &#123;<br>sout(do_twicw(<span class="hljs-keyword">new</span> TenX(), <span class="hljs-number">2</span>))<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="Dynamic-Method-Selection-Puzzle"><a href="#Dynamic-Method-Selection-Puzzle" class="headerlink" title="Dynamic Method Selection Puzzle"></a>Dynamic Method Selection Puzzle</h2><p>[[lecture10 Subtype Polymorphism vs. HoFs]]<br>[[lecture10 Subtype Polymorphism vs. HoFs#Comparables|comparator]]</p><blockquote><p>[!summary]<br>The rules:</p><ul><li>Compiler allows memory box to hold any subtype.</li><li>Compiler allows calls based on static type.</li><li>Overridden non-static methods are selected at run time based on dynamic type.</li><li>Everything else is based on static type,including overloaded methods</li></ul></blockquote><figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs abnf">Object o3 <span class="hljs-operator">=</span> (Dog) o2<span class="hljs-comment">;</span><br>o3.bark()<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure><blockquote><p>[!bug] </p><ul><li>Object do not have bark method </li><li>Based on rule 2</li></ul></blockquote><h2 id="Subtype-polymorphic-子类型多态性"><a href="#Subtype-polymorphic-子类型多态性" class="headerlink" title="Subtype polymorphic   子类型多态性"></a>Subtype polymorphic   子类型多态性</h2><ul><li>polymorphic: “providing a single interface to entities of different types”</li></ul><p>多个子类型使用同一个接口，在运行过程中根据不同的动态类型选择不同的方法，体现面向对象的思维。</p><h3 id="Subtype-polymorphic-vs-Explicit-Higher-Order-functions"><a href="#Subtype-polymorphic-vs-Explicit-Higher-Order-functions" class="headerlink" title="Subtype polymorphic vs. Explicit Higher Order functions"></a>Subtype polymorphic vs. Explicit Higher Order functions</h3><p>Explicit HoF Approach</p><figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">def print_larger(<span class="hljs-variable language_">x</span>, <span class="hljs-variable language_">y</span>, compare, stringify):<br><span class="hljs-keyword">if</span> compare(<span class="hljs-variable language_">x</span>, <span class="hljs-variable language_">y</span>):<br><span class="hljs-keyword">return</span> stringify(<span class="hljs-variable language_">x</span>)<br><span class="hljs-keyword">return</span> stringify(<span class="hljs-variable language_">y</span>)<br></code></pre></td></tr></table></figure><p>Subtype Polymorphism Approach</p><figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">def print_larger(<span class="hljs-variable language_">x</span>, <span class="hljs-variable language_">y</span>):<br><span class="hljs-keyword">if</span> <span class="hljs-variable language_">x</span>.largerThan(<span class="hljs-variable language_">y</span>):<br><span class="hljs-keyword">return</span> <span class="hljs-variable language_">x</span>.str()<br><span class="hljs-keyword">return</span> <span class="hljs-variable language_">y</span>.str()<br></code></pre></td></tr></table></figure><p>根据x，y不同的类型调用统一接口的largerThan的不同方法。面向对象</p><h2 id="DIY-Comparison"><a href="#DIY-Comparison" class="headerlink" title="DIY Comparison"></a>DIY Comparison</h2><p>Goal: The One True Max function</p><p><img src="/2024/12/11/10/Pasted%20image%2020241211142933.png"></p><p><img src="/2024/12/11/10/Pasted%20image%2020241211143356.png"></p><ul><li>create an interface to make all its subtype are comparable.</li><li>Make One True Max function use same name method – &gt; dynamic selection.</li><li>use Max class in terms of this interface.</li></ul><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-symbol">Ourcomparable</span> &#123;<br><span class="hljs-built_in">int</span> compareTo(Object obj);<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">OurComparable</span> &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compareTo(Object obj)&#123;<br><span class="hljs-comment">/** Cast may cause runtime errors</span><br><span class="hljs-comment">Dog uddaDog = (Dog) obj:</span><br><span class="hljs-comment">return this.size - uddadog.size;</span><br><span class="hljs-comment">&#125;</span><br><span class="hljs-comment">&#125;...</span><br></code></pre></td></tr></table></figure><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs perl">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Maximizer</span> </span>&#123;<br>public static OurComparable max(OurComparable[] a) &#123;<br>...<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-symbol">Dog</span>[] dogs = new Dog[] &#123;<span class="hljs-built_in">d1</span>, <span class="hljs-built_in">d2</span>, <span class="hljs-built_in">d3</span>&#125;<span class="hljs-comment">;</span><br><span class="hljs-symbol">Dog</span> largest = (Dog) Maximizer.max(dogs)<br></code></pre></td></tr></table></figure><blockquote><p>[!success] </p><ul><li>No need for array maximization code in every custom type (i.e. no Dog.maxDog(Dog[]) function required).</li><li>Code that operates on multiple types (mostly) gracefully</li></ul></blockquote><h2 id="Comparables"><a href="#Comparables" class="headerlink" title="Comparables"></a>Comparables</h2><blockquote><p>[!warning] Two issues:</p><ul><li>Awkward casting to&#x2F;from Objects.</li><li>We made it up.</li><li>很多类没有实现OurComparable例如String等</li><li>没有类或函数使用OurComparable</li></ul></blockquote><p>我们要使用一个内置的comparable接口 built-in Comparable interface.</p><ul><li>use generics</li></ul><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">T</span>&gt; &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compareTo(T obj);<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compareTo(Dog uddaDog) &#123;<br><span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.size - uddadog.size;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><blockquote><p>[!success] Advantages:</p><ul><li>Lots of built in classes implement Comparable</li><li>Lots of libraries use the Comparable interface</li><li>Avoids need for casts.</li></ul></blockquote><h2 id="Comparators"><a href="#Comparators" class="headerlink" title="Comparators"></a>Comparators</h2><blockquote><p>[!hint] </p><ul><li>use different way to sort or compare somethings</li><li>In this case, we can use the size of the dogs, or we can use the name of dogs like a, b, c…</li><li>&#x3D;&#x3D;so we use comparators&#x3D;&#x3D;</li></ul></blockquote><figure class="highlight gml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs gml">def print_larger(T <span class="hljs-variable language_">x</span>, T <span class="hljs-variable language_">y</span>, comparator&lt;T&gt; c):<br><span class="hljs-keyword">if</span> c.compare(<span class="hljs-variable language_">x</span>,<span class="hljs-variable language_">y</span>):<br><span class="hljs-keyword">return</span> <span class="hljs-variable language_">x</span>.str();<br><span class="hljs-keyword">return</span> <span class="hljs-variable language_">y</span>.str();<br></code></pre></td></tr></table></figure><p><img src="/2024/12/11/10/Pasted%20image%2020241211151306.png"></p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br><span class="hljs-keyword">private</span> String name;<br><span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> size;<br><br><span class="hljs-keyword">public</span> static <span class="hljs-keyword">class</span> <span class="hljs-symbol">NameComparator</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparator</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compare(Dog d1, Dog d2) &#123;<br><span class="hljs-keyword">return</span> d1.name.compareTo(d2.name);<br>&#125;<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>more formal way</p><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs angelscript"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-symbol">Dog</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparable</span>&lt;<span class="hljs-symbol">Dog</span>&gt;&#123;<br><br><br><span class="hljs-keyword">private</span> static <span class="hljs-keyword">class</span> <span class="hljs-symbol">NameComparator</span> <span class="hljs-symbol">implements</span> <span class="hljs-symbol">Comparator</span>&lt;<span class="hljs-symbol">Dog</span>&gt; &#123;<br><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> compare(Dog d1, Dog d2) &#123;<br><span class="hljs-keyword">return</span> d1.name.compareTo(d2.name);<br>&#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> static Comparator&lt;Dog&gt; getNameComparator() &#123;<br><span class="hljs-keyword">return</span> new Namecomparator();<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs perl">immport java.util.Comparator<br>public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DogLauncher</span> </span>&#123;<br>Comparator&lt;Dog&gt; nc = Dog.getNameComparator();<br><span class="hljs-keyword">if</span> (nc,compare(d1, d2) &gt; <span class="hljs-number">0</span>) &#123;<br>d1.bark()<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>d3.bark()<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p><img src="/2024/12/11/10/Pasted%20image%2020241211153720.png"></p>]]></content>
     
     
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>java</tag>
       
       <tag>DataStructure</tag>
-      
-      <tag>UCB</tag>
       
     </tags>
     
@@ -340,11 +317,34 @@
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>java</tag>
       
       <tag>DataStructure</tag>
       
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>cs61b_lecture_9</title>
+    <link href="/2024/12/10/9/"/>
+    <url>/2024/12/10/9/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Implementation-Inheritance-Extends"><a href="#Implementation-Inheritance-Extends" class="headerlink" title="Implementation Inheritance: Extends"></a>Implementation Inheritance: Extends</h2><p>当一个类是一个接口的下位次，我们使用implement来实现继承<br>当他是一个类的下位次，我们使用extend完成继承</p><p><img src="/2024/12/10/9/Pasted%20image%2020241210172508.png"></p><figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs scala">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">RotatingSLList&lt;Blorp&gt;</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">SLList&lt;Blorp&gt;</span> </span>&#123;<br>public void rotateRight() &#123;<br><span class="hljs-type">Blorp</span> oldBack = removeLast();<br>addFirst(oldBack);<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>inherits all members of SLList:</p><ul><li>All instance and static variables</li><li>All methods</li><li>All nested classes<br>&#x3D;&#x3D;Constructors&#x3D;&#x3D; are not inherited</li></ul><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">VengefulSLList</span>&lt;<span class="hljs-title">Item</span>&gt; <span class="hljs-title">extends</span> <span class="hljs-title">SLList</span>&lt;<span class="hljs-title">Item</span>&gt; &#123;<br><span class="hljs-keyword">private</span> SLList&lt;Item&gt; deletedItems;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">VengefulSLList</span>()</span> &#123;<br>delectedItems = <span class="hljs-keyword">new</span> SLList&lt;Item&gt;();<br>&#125;<br><br>@Override<br><span class="hljs-function"><span class="hljs-keyword">public</span> Item <span class="hljs-title">removeLast</span>()</span> &#123;<br>Item oldBlack = super.removeLast(); <br><span class="hljs-meta"># call Superclass`s version of removeLast()</span><br><br>deletedItems.addLast(oldBack);<br><span class="hljs-keyword">return</span> oldBack;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">printLostItems</span>()</span> &#123;<br>deletedItems.print();<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure><p><strong>Super.method</strong><br>calls superclass versions of method<br>Java &#x3D;&#x3D;not allows super.super&#x3D;&#x3D;</p><h2 id="Constructor-Behaviors"><a href="#Constructor-Behaviors" class="headerlink" title="Constructor Behaviors"></a>Constructor Behaviors</h2><p><em>ALL Constructors must start with a call to one of the super class’s Constructors</em></p><p><em>ONE OF ?</em> :<br><code>super(x)</code>  <code>super()</code><br>use a super Constructor with parameters</p><ul><li>implicit call - super() –<strong>If you don’t explicitly call the constructor, Java will automatically do it for you.</strong></li></ul><p>&#x3D;&#x3D;every type in java is a descendant of the Object class&#x3D;&#x3D; implicitly<br>&#x3D;&#x3D;Is a NOT Has a&#x3D;&#x3D;</p><h2 id="Encapsulation-封装"><a href="#Encapsulation-封装" class="headerlink" title="Encapsulation 封装"></a>Encapsulation 封装</h2><h3 id="Complexity-The-Enemy-How-to-mange-it"><a href="#Complexity-The-Enemy-How-to-mange-it" class="headerlink" title="Complexity The Enemy : How to mange it"></a>Complexity The Enemy : How to mange it</h3><ul><li>Hierarchical abstraction.<ul><li>Create &#x3D;&#x3D;layers of abstraction&#x3D;&#x3D;, with clear abstraction barriers!</li></ul></li><li>“Design for change” (D. Parnas)<ul><li>Organize program around objects.</li><li>Let objects decide how things are done.</li><li>&#x3D;&#x3D;Hide information&#x3D;&#x3D; others don’t need.</li></ul></li></ul><p><strong>A module is said to be encapsulated if its implementation is completely hidden, and it can be accessed only through a documented interface.</strong></p><h3 id="Implementation-Inheritance-Breaks-Encapsulation"><a href="#Implementation-Inheritance-Breaks-Encapsulation" class="headerlink" title="Implementation Inheritance Breaks Encapsulation"></a>Implementation Inheritance Breaks Encapsulation</h3><p><img src="/2024/12/10/9/Pasted%20image%2020241210175319.png"></p><h2 id="Dynamic-Method-Selection-And-Type-Checking"><a href="#Dynamic-Method-Selection-And-Type-Checking" class="headerlink" title="Dynamic Method Selection And Type Checking"></a>Dynamic Method Selection And Type Checking</h2><p>[<a href="https://youtu.be/xGC4bVnTXcA?si=--fOJLFfDFO8lOVs%5D">https://youtu.be/xGC4bVnTXcA?si=--fOJLFfDFO8lOVs]</a></p><p>动态方法选择发生在动态方法集中，只在重写override情况发生<br>If overriden, decide which method to call based on run-time type</p><p>类型检查发生在编译部分，编译器检查对象的静态类型<br><img src="/2024/12/10/9/Pasted%20image%2020241210180006.png"></p><blockquote><p>[!note]<br>Expressions have compile-time types:</p><ul><li>An expression using new keyword</li><li>Methods have compile-time type</li></ul></blockquote><p><img src="/2024/12/10/9/Pasted%20image%2020241210181248.png"><br><img src="/2024/12/10/9/Pasted%20image%2020241210181300.png"></p><h2 id="Casting"><a href="#Casting" class="headerlink" title="Casting"></a>Casting</h2><figure class="highlight lisp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lisp">Poodle largerPoodle = (<span class="hljs-name">Poodle</span>) maxDog(<span class="hljs-name">frank</span>, frankSr)<br></code></pre></td></tr></table></figure><blockquote><p>[!danger]<br>get a ClassCastException at runtime.</p></blockquote><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">Poodle frank</span>  = new Poodle(<span class="hljs-string">&quot;Frank&quot;</span>, 5);<br><span class="hljs-attribute">Malamute frankSr</span> = new Malamute(<span class="hljs-string">&quot;Frank Sr.&quot;</span>, 100);<br><span class="hljs-attribute">Poodle largerPoodle</span> = (Poodle) maxDog(frank, frankSr);<br></code></pre></td></tr></table></figure><h2 id="Higher-Order-function"><a href="#Higher-Order-function" class="headerlink" title="Higher Order function"></a>Higher Order function</h2><p><img src="/2024/12/10/9/Pasted%20image%2020241210181902.png"></p><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title">IntUnaryFunction</span> &#123;<br><span class="hljs-function"><span class="hljs-built_in">int</span> <span class="hljs-title">apply</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> x</span>)</span><br><span class="hljs-function">&#125;</span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> TenX implements IntUnaryFuncton</span> &#123;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">apply</span>(<span class="hljs-params"><span class="hljs-built_in">int</span> x</span>)</span> &#123;<br><span class="hljs-keyword">return</span> <span class="hljs-number">10</span> * x;<br>&#125;<br>&#125;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">HoFDemo</span> &#123;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-built_in">int</span> <span class="hljs-title">do_twice</span>(<span class="hljs-params">IntUnaryFunction f, <span class="hljs-built_in">int</span> x</span>)</span> &#123;<br><span class="hljs-keyword">return</span> f.apply(f.apply(x))<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span>(<span class="hljs-params">String[] <span class="hljs-keyword">args</span></span>)</span> &#123;<br>sout(do_twicw(<span class="hljs-keyword">new</span> TenX(), <span class="hljs-number">2</span>))<br>&#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+    <tags>
+      
       <tag>UCB</tag>
+      
+      <tag>java</tag>
+      
+      <tag>DataStructure</tag>
       
     </tags>
     
@@ -363,11 +363,11 @@
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>java</tag>
       
       <tag>DataStructure</tag>
-      
-      <tag>UCB</tag>
       
     </tags>
     
@@ -386,11 +386,11 @@
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>java</tag>
       
       <tag>DataStructure</tag>
-      
-      <tag>UCB</tag>
       
     </tags>
     
@@ -409,11 +409,11 @@
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>java</tag>
       
       <tag>DataStructure</tag>
-      
-      <tag>UCB</tag>
       
     </tags>
     
@@ -432,11 +432,11 @@
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>java</tag>
       
       <tag>DataStructure</tag>
-      
-      <tag>UCB</tag>
       
     </tags>
     
@@ -455,11 +455,11 @@
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>java</tag>
       
       <tag>DataStructure</tag>
-      
-      <tag>UCB</tag>
       
     </tags>
     
@@ -501,11 +501,11 @@
     
     <tags>
       
+      <tag>UCB</tag>
+      
       <tag>java</tag>
       
       <tag>DataStructure</tag>
-      
-      <tag>UCB</tag>
       
     </tags>
     
