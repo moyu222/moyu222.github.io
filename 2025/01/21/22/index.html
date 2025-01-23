@@ -26,12 +26,23 @@
 <meta property="og:site_name" content="MoyuBlog">
 <meta property="og:description" content="BreadthFirstPathsTree and Graph Traversal[[lecture21 Tree and Graph Traversals#Tree Vs. Graph Traversals]] Shortest Paths Challenges and BFS AnswerInitialize a queue with a starting vertex s and mark">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121132630.png">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121132649.png">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121132839.png">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121132957.png">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121133056.png">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121133518.png">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121133646.png">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121133700.png">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121134101.png">
+<meta property="og:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121134206.png">
 <meta property="article:published_time" content="2025-01-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2025-01-23T06:59:02.674Z">
+<meta property="article:modified_time" content="2025-01-23T07:21:52.855Z">
 <meta property="article:author" content="moyu222">
-<meta property="article:tag" content="UCB">
 <meta property="article:tag" content="DataStructure">
+<meta property="article:tag" content="UCB">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://moyu222.github.io/2025/01/21/22/Pasted%20image%2020250121132630.png">
   
   
   
@@ -224,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          173 字
+          136 字
         
       </span>
     
@@ -298,22 +309,22 @@
 <li>Memory usage</li>
 <li>Difficulty of implementing various graph algorithms</li>
 </ul>
-<p><strong>Integer Vertices</strong><br>![[Pasted image 20250121132630.png | 500]]<br>![[Pasted image 20250121132649.png | 500]]</p>
+<p><strong>Integer Vertices</strong><br><img src="/2025/01/21/22/Pasted%20image%2020250121132630.png" srcset="/img/loading.gif" lazyload><br><img src="/2025/01/21/22/Pasted%20image%2020250121132649.png" srcset="/img/loading.gif" lazyload></p>
 <p>Our choice of Graph API has deep implications on the implementation of DepthFirstPaths, BreadthFirstPaths, print, and other graph “clients”.</p>
 <hr>
-<h2 id="Graph-Representation-and-Graph-Algorithm-Runtime"><a href="#Graph-Representation-and-Graph-Algorithm-Runtime" class="headerlink" title="Graph Representation and Graph Algorithm Runtime"></a>Graph Representation and Graph Algorithm Runtime</h2><p><strong>Adjacency Matrix</strong><br>![[Pasted image 20250121132839.png | 500]]</p>
+<h2 id="Graph-Representation-and-Graph-Algorithm-Runtime"><a href="#Graph-Representation-and-Graph-Algorithm-Runtime" class="headerlink" title="Graph Representation and Graph Algorithm Runtime"></a>Graph Representation and Graph Algorithm Runtime</h2><p><strong>Adjacency Matrix</strong><br><img src="/2025/01/21/22/Pasted%20image%2020250121132839.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>Edge Sets : Collection of all edges</strong></p>
 <ul>
 <li>{(0, 1), (0, 2), (1, 2)}</li>
 </ul>
-<p><strong>Adjacency List</strong><br>![[Pasted image 20250121132957.png | 500]]<br>这个时间复杂度需要注意一下</p>
-<p><strong>Runtime</strong><br>![[Pasted image 20250121133056.png | 500]]</p>
+<p><strong>Adjacency List</strong><br><img src="/2025/01/21/22/Pasted%20image%2020250121132957.png" srcset="/img/loading.gif" lazyload><br>这个时间复杂度需要注意一下</p>
+<p><strong>Runtime</strong><br><img src="/2025/01/21/22/Pasted%20image%2020250121133056.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>Bare-Bones Undirected Graph Implementation</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Graph</span> &#123;<br><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> <span class="hljs-type">int</span> V;  <span class="hljs-keyword">private</span> List&lt;Integer&gt;[] adj;<br><br><span class="hljs-keyword">public</span> <span class="hljs-title function_">Graph</span><span class="hljs-params">(<span class="hljs-type">int</span> V)</span> &#123;<br>         <span class="hljs-built_in">this</span>.V = V;<br>         adj = (List&lt;Integer&gt;[]) <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>[V];<br>         <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">v</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; v &lt; V; v++) &#123;<br>             adj[v] = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;Integer&gt;();<br>         &#125;<br>	&#125; <br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addEdge</span><span class="hljs-params">(<span class="hljs-type">int</span> v, <span class="hljs-type">int</span> w)</span> &#123;<br>         adj[v].add(w);   adj[w].add(v);<br>	&#125;<br><br><span class="hljs-keyword">public</span> Iterable&lt;Integer&gt; <span class="hljs-title function_">adj</span><span class="hljs-params">(<span class="hljs-type">int</span> v)</span> &#123;<br>        <span class="hljs-keyword">return</span> adj[v];<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="Graph-Traversal-implementations-and-Runtime"><a href="#Graph-Traversal-implementations-and-Runtime" class="headerlink" title="Graph Traversal implementations and Runtime"></a>Graph Traversal implementations and Runtime</h2><p><strong>Idea to implement</strong><br>![[Pasted image 20250121133518.png | 500]]</p>
-<p><strong>DepthFirstPaths, Recursive Implementation</strong><br>![[Pasted image 20250121133646.png | 500]]<br>![[Pasted image 20250121133700.png | 500]]</p>
+<h2 id="Graph-Traversal-implementations-and-Runtime"><a href="#Graph-Traversal-implementations-and-Runtime" class="headerlink" title="Graph Traversal implementations and Runtime"></a>Graph Traversal implementations and Runtime</h2><p><strong>Idea to implement</strong><br><img src="/2025/01/21/22/Pasted%20image%2020250121133518.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>DepthFirstPaths, Recursive Implementation</strong><br><img src="/2025/01/21/22/Pasted%20image%2020250121133646.png" srcset="/img/loading.gif" lazyload><br><img src="/2025/01/21/22/Pasted%20image%2020250121133700.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>O(V + E)</strong></p>
 <ul>
 <li>Each vertex is visited at most once (O(V)).</li>
@@ -324,8 +335,8 @@
 </ul>
 </li>
 </ul>
-<p><strong>BreadthFirstPaths Implementation</strong><br>![[Pasted image 20250121134101.png | 500]]</p>
-<p><strong>Graph Problems</strong><br>![[Pasted image 20250121134206.png | 500]]</p>
+<p><strong>BreadthFirstPaths Implementation</strong><br><img src="/2025/01/21/22/Pasted%20image%2020250121134101.png" srcset="/img/loading.gif" lazyload></p>
+<p><strong>Graph Problems</strong><br><img src="/2025/01/21/22/Pasted%20image%2020250121134206.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -338,9 +349,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/UCB/" class="print-no-link">#UCB</a>
-      
         <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
+      
+        <a href="/tags/UCB/" class="print-no-link">#UCB</a>
       
     </div>
   
