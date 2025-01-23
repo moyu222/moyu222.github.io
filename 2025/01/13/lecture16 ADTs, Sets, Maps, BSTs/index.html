@@ -19,21 +19,23 @@
   <meta name="author" content="moyu222">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="ADT Abstract Data Types![[Pasted image 20250113105822.png]]  我们定义的deque是ADT，而ArrayDeque和LinkedListDeque是deque的实现 后文学的所有抽象的数据结构包括stack等，使用他们的功能定义的，具体实现我们不关心的都属于ADT ![[Pasted image 20250113110452.png]]">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://moyu222.github.io/2025/01/22/hello-world/index.html">
+<meta property="og:title" content="MoyuBlog">
+<meta property="og:url" content="https://moyu222.github.io/2025/01/13/lecture16%20ADTs,%20Sets,%20Maps,%20BSTs/index.html">
 <meta property="og:site_name" content="MoyuBlog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="ADT Abstract Data Types![[Pasted image 20250113105822.png]]  我们定义的deque是ADT，而ArrayDeque和LinkedListDeque是deque的实现 后文学的所有抽象的数据结构包括stack等，使用他们的功能定义的，具体实现我们不关心的都属于ADT ![[Pasted image 20250113110452.png]]">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-22T15:19:02.157Z">
-<meta property="article:modified_time" content="2025-01-22T15:19:02.157Z">
+<meta property="article:published_time" content="2025-01-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-21T07:49:58.393Z">
 <meta property="article:author" content="moyu222">
+<meta property="article:tag" content="DataStructure">
+<meta property="article:tag" content="UCB">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - MoyuBlog</title>
+  <title>MoyuBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -210,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-22 23:19" pubdate>
-          2025年1月22日 晚上
+        <time datetime="2025-01-13 00:00" pubdate>
+          2025年1月13日 凌晨
         </time>
       </span>
     
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          221 字
         
       </span>
     
@@ -233,7 +235,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -270,24 +272,51 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h2 id="ADT-Abstract-Data-Types"><a href="#ADT-Abstract-Data-Types" class="headerlink" title="ADT Abstract Data Types"></a>ADT Abstract Data Types</h2><p>![[Pasted image 20250113105822.png]]</p>
+<ul>
+<li>我们定义的deque是ADT，而ArrayDeque和LinkedListDeque是deque的实现</li>
+<li>后文学的所有抽象的数据结构包括stack等，使用他们的功能定义的，具体实现我们不关心的都属于ADT<br> ![[Pasted image 20250113110452.png]]</li>
+</ul>
+<h3 id="Abstract-Data-Types-in-Java"><a href="#Abstract-Data-Types-in-Java" class="headerlink" title="Abstract Data Types in Java"></a>Abstract Data Types in Java</h3><ul>
+<li>许多java.util library 中的重要接口都继承了Collection接口</li>
+<li>这些接口都是ADT，有不同的方法实现，我们关注&#x3D;&#x3D;TreeSet and TreeMap&#x3D;&#x3D;</li>
+<li>下文讲了map的一个例子 ，map有点像字典，可以看作有联系的array. associative arrays<br>![[Pasted image 20250113111439.png]]<br>![[Pasted image 20250113111502.png]]</li>
+</ul>
+<h2 id="Binary-Search-Trees-Definitions"><a href="#Binary-Search-Trees-Definitions" class="headerlink" title="Binary Search Trees Definitions"></a>Binary Search Trees Definitions</h2><ul>
+<li>Tree: <ul>
+<li>a set of node </li>
+<li>a set of edges that connect those nodes </li>
+<li>两个节点之间只能有一条path(不能有cycle)</li>
+</ul>
+</li>
+<li>Rooted Trees and Rooted Binary Trees <ul>
+<li>除了root每个节点都要有一个Parent</li>
+<li>没有child的叫做leaf</li>
+</ul>
+</li>
+<li>BST: a rooted Binary Tree with BST property <ul>
+<li>Every key in the left subtree is less than X’s key.</li>
+<li>Every key in the right subtree is greater than X’s key.  </li>
+<li> complete, transitive, and antisymmetric.<br>![[Pasted image 20250113112932.png]]</li>
+</ul>
+</li>
+</ul>
+<h2 id="BST-Operation"><a href="#BST-Operation" class="headerlink" title="BST Operation"></a>BST Operation</h2><h3 id="reasearch"><a href="#reasearch" class="headerlink" title="reasearch"></a>reasearch</h3><p>![[Pasted image 20250113113749.png]]</p>
+<h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3><p>![[Pasted image 20250113113829.png]]</p>
+<h3 id="Delete"><a href="#Delete" class="headerlink" title="Delete"></a>Delete</h3><p>3 Cases:</p>
+<ul>
+<li>Deletion key has no children.</li>
+<li>Deletion key has one child.</li>
+<li>Deletion key has two children.<br>![[Pasted image 20250113114652.png]]<br>![[Pasted image 20250113114706.png]]<br>![[Pasted image 20250113114721.png]]</li>
+<li>第三种情况最复杂，我们找到root的predecessor or successor </li>
+<li>delete其中一个然后换到root<br>![[Pasted image 20250113114851.png]]<br>![[Pasted image 20250113114859.png]]</li>
+</ul>
+<h2 id="Sets-vs-Maps-and-Summary"><a href="#Sets-vs-Maps-and-Summary" class="headerlink" title="Sets vs. Maps and Summary"></a>Sets vs. Maps and Summary</h2><p>![[Pasted image 20250113115251.png]]<br>![[Pasted image 20250113115259.png]]<br>![[Pasted image 20250113115331.png]]</p>
 
                 
               </div>
@@ -297,6 +326,15 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
+      
+        <a href="/tags/UCB/" class="print-no-link">#UCB</a>
+      
+    </div>
+  
 </div>
 
 
@@ -305,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://moyu222.github.io/2025/01/22/hello-world/</div>
+      <div></div>
+      <div>https://moyu222.github.io/2025/01/13/lecture16 ADTs, Sets, Maps, BSTs/</div>
     </div>
     <div class="license-meta">
       
@@ -318,7 +356,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月22日</div>
+          <div>2025年1月13日</div>
         </div>
       
       
@@ -350,11 +388,17 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/01/14/lecture19%20Hash%20Table/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/21/lecture22%20Graph%20Traversals%20and%20Implementation/" title="">
+                      <a href="/2025/01/13/lecture17%20B-Trees%20(2-3,%202-3-4%20Trees)/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

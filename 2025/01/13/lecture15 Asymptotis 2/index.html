@@ -19,21 +19,23 @@
   <meta name="author" content="moyu222">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="本节简单分析一些算法的时间复杂度  for -for.   n recursion.   2^n binary search  logn selection sort n^2 merge sort.   nlogn不做详细笔记了  Runtime Analysis.Understanding the runtime of code involves deep thought. It amounts">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://moyu222.github.io/2025/01/22/hello-world/index.html">
+<meta property="og:title" content="MoyuBlog">
+<meta property="og:url" content="https://moyu222.github.io/2025/01/13/lecture15%20Asymptotis%202/index.html">
 <meta property="og:site_name" content="MoyuBlog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="本节简单分析一些算法的时间复杂度  for -for.   n recursion.   2^n binary search  logn selection sort n^2 merge sort.   nlogn不做详细笔记了  Runtime Analysis.Understanding the runtime of code involves deep thought. It amounts">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-22T15:19:02.157Z">
-<meta property="article:modified_time" content="2025-01-22T15:19:02.157Z">
+<meta property="article:published_time" content="2025-01-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-13T02:51:07.859Z">
 <meta property="article:author" content="moyu222">
+<meta property="article:tag" content="DataStructure">
+<meta property="article:tag" content="UCB">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - MoyuBlog</title>
+  <title>MoyuBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -210,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-22 23:19" pubdate>
-          2025年1月22日 晚上
+        <time datetime="2025-01-13 00:00" pubdate>
+          2025年1月13日 凌晨
         </time>
       </span>
     
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          70 字
         
       </span>
     
@@ -270,24 +272,27 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <p>本节简单分析一些算法的时间复杂度</p>
+<ul>
+<li>for -for.   n</li>
+<li>recursion.   2^n</li>
+<li>binary search  logn</li>
+<li>selection sort n^2</li>
+<li>merge sort.   nlogn<br>不做详细笔记了</li>
+</ul>
+<p><strong>Runtime Analysis.</strong><br>Understanding the runtime of code involves deep thought. It amounts to asking: “How long does it take to do stuff?”, where stuff can be any conceivable computational process whatsoever. It simply cannot be done mechanically, at least for non-trivial problems. As an example, a pair of nested for loops does NOT mean Θ(N^2) runtime as we saw in lecture.</p>
+<p><strong>Cost Model.</strong> <br>As an anchor for your thinking, recall the idea of a “cost model” from last lecture. Pick an operation and count them. You want the one whose count has the highest order of growth as a function of the input size.</p>
+<p><strong>Important Sums.</strong> This is not a math class so we’ll be a bit sloppy, but the two key sums that you should know are that:</p>
+<ul>
+<li>1+2+3+…+N∈Θ(N^2)</li>
+<li>1+2+4+8+…+N∈Θ(N)</li>
+</ul>
+<p><strong>Practice.</strong> <br>The only way to learn this is through plenty of practice. Make sure to work through the problems in lecture and below when you have some time.</p>
 
                 
               </div>
@@ -297,6 +302,15 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
+      
+        <a href="/tags/UCB/" class="print-no-link">#UCB</a>
+      
+    </div>
+  
 </div>
 
 
@@ -305,8 +319,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://moyu222.github.io/2025/01/22/hello-world/</div>
+      <div></div>
+      <div>https://moyu222.github.io/2025/01/13/lecture15 Asymptotis 2/</div>
     </div>
     <div class="license-meta">
       
@@ -318,7 +332,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月22日</div>
+          <div>2025年1月13日</div>
         </div>
       
       
@@ -350,11 +364,17 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/01/13/lecture17%20B-Trees%20(2-3,%202-3-4%20Trees)/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/21/lecture22%20Graph%20Traversals%20and%20Implementation/" title="">
+                      <a href="/2025/01/13/lecture18%20Red%20Black%20Trees/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

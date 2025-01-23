@@ -19,21 +19,23 @@
   <meta name="author" content="moyu222">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="Intro to Disjoint Sets Today: Deriving the “Disjoint Sets” data structure for solving the “&#x3D;&#x3D;Dynamic Connectivity”&#x3D;&#x3D; problem Disjoint Sets 数据结构有两个操作： connect(x, y): Connects x and">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://moyu222.github.io/2025/01/22/hello-world/index.html">
+<meta property="og:title" content="MoyuBlog">
+<meta property="og:url" content="https://moyu222.github.io/2025/01/11/lecture14%20Disjoint%20Sets%20%E4%B8%8D%E7%9B%B8%E4%BA%A4%E7%9A%84%E9%9B%86/index.html">
 <meta property="og:site_name" content="MoyuBlog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="Intro to Disjoint Sets Today: Deriving the “Disjoint Sets” data structure for solving the “&#x3D;&#x3D;Dynamic Connectivity”&#x3D;&#x3D; problem Disjoint Sets 数据结构有两个操作： connect(x, y): Connects x and">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-22T15:19:02.157Z">
-<meta property="article:modified_time" content="2025-01-22T15:19:02.157Z">
+<meta property="article:published_time" content="2025-01-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-11T03:54:11.050Z">
 <meta property="article:author" content="moyu222">
+<meta property="article:tag" content="DataStructure">
+<meta property="article:tag" content="UCB">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - MoyuBlog</title>
+  <title>MoyuBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -210,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-22 23:19" pubdate>
-          2025年1月22日 晚上
+        <time datetime="2025-01-11 00:00" pubdate>
+          2025年1月11日 凌晨
         </time>
       </span>
     
@@ -222,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          392 字
         
       </span>
     
@@ -233,7 +235,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -270,24 +272,55 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+                <h2 id="Intro-to-Disjoint-Sets"><a href="#Intro-to-Disjoint-Sets" class="headerlink" title="Intro to Disjoint Sets"></a>Intro to Disjoint Sets</h2><ul>
+<li>Today: Deriving the “Disjoint Sets” data structure for solving the “&#x3D;&#x3D;Dynamic Connectivity”&#x3D;&#x3D; problem</li>
+<li>Disjoint Sets 数据结构有两个操作：<ul>
+<li>connect(x, y): Connects x and y.</li>
+<li>isConnected(x, y): Returns true if x and y are connected, Connections can &#x3D;&#x3D;be transitive&#x3D;&#x3D;, i.e. they doun’t need to be direct.<br>![[Pasted image 20250111105319.png]]</li>
+</ul>
+</li>
+<li>dynamic: 连接情况是动态变化的</li>
+<li>Goal: 设计一个高效的DisjointSets 接口实现</li>
+</ul>
+<h3 id="Better-Approach-Connected-components"><a href="#Better-Approach-Connected-components" class="headerlink" title="Better Approach: Connected components"></a>Better Approach: Connected components</h3><ul>
+<li>初始的方法是记录所有连接</li>
+<li>我们可以使用集合的概念，将connected的接待您放在一个connected component 中<br> ![[Pasted image 20250111105953.png]]</li>
+</ul>
+<h2 id="Quick-Find"><a href="#Quick-Find" class="headerlink" title="Quick Find"></a>Quick Find</h2><ol>
+<li>use a list of DS(disjoint set) - bad and slow </li>
+<li>Just use a List of Integers (Quick Find)<br>![[Pasted image 20250111110515.png]]<br>![[Pasted image 20250111110532.png]]</li>
+</ol>
+<ul>
+<li>isConnected is very good and $\theta(1)$ ,but connet method need us to modify many numbers in the list and it is relatively slow $\theta(N)$</li>
+</ul>
+<h2 id="Quick-Union"><a href="#Quick-Union" class="headerlink" title="Quick Union"></a>Quick Union</h2><ul>
+<li>Next approach (QuickUnion): We will still represent everything as connected components, and we will still represent connected components as a list of integers. However, &#x3D;&#x3D;values will be chosen so that connect is fast&#x3D;&#x3D;.</li>
+<li>接着上文QF进行延伸，我们改变选择的值，使得结合两个集后变成他们的并集只改变一个值</li>
+<li>idea: 我们使用他的父类而不是id，类似树状结构<br>![[Pasted image 20250111112002.png]]</li>
+<li>使用root：为了使Tree的Heigh不是很大</li>
+<li>worst case:<br>![[Pasted image 20250111112122.png]]<br>![[Pasted image 20250111112259.png]]</li>
+</ul>
+<h2 id="Weighted-Quick-Union"><a href="#Weighted-Quick-Union" class="headerlink" title="Weighted  Quick Union"></a>Weighted  Quick Union</h2><ul>
+<li>我们希望尽可能避免出现最坏情况，因此我们直观的看希望将Height小的root连接到height大的root</li>
+<li>然而我们选择将weight小的连接到weight大的Tree<ul>
+<li>weight Quick Union很容易实现</li>
+<li>最后的时间复杂度是相同的，我们只关注渐近情况<br>![[Pasted image 20250111113749.png]]<br>![[Pasted image 20250111113818.png]]</li>
+</ul>
+</li>
+<li>两种实现weighted quick union的方法：<ul>
+<li>在父数组中使用-1以外的值来跟踪根节点的大小。</li>
+<li>创建一个单独的size数组。<br>![[Pasted image 20250111113954.png]]<br>![[Pasted image 20250111114011.png]]</li>
+</ul>
+</li>
+</ul>
+<h2 id="Weighted-QuickUnion-with-Path-Compression-and-Summary"><a href="#Weighted-QuickUnion-with-Path-Compression-and-Summary" class="headerlink" title="Weighted QuickUnion with Path Compression and Summary"></a>Weighted QuickUnion with Path Compression and Summary</h2><ul>
+<li>我们可以看出问题，QF和WQF方法在isConnected时都要经过所在值路径上的所有节点，因此我们可以进入path compression的概念，每次isConnected操作都压缩整个tree的路径，使得Tree的height越来越小。<br>![[Pasted image 20250111115320.png]]<br>![[Pasted image 20250111115332.png]]<br>![[Pasted image 20250111115354.png]]<br>![[Pasted image 20250111115409.png]]</li>
+</ul>
 
                 
               </div>
@@ -297,6 +330,15 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
+      
+        <a href="/tags/UCB/" class="print-no-link">#UCB</a>
+      
+    </div>
+  
 </div>
 
 
@@ -305,8 +347,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://moyu222.github.io/2025/01/22/hello-world/</div>
+      <div></div>
+      <div>https://moyu222.github.io/2025/01/11/lecture14 Disjoint Sets 不相交的集/</div>
     </div>
     <div class="license-meta">
       
@@ -318,7 +360,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月22日</div>
+          <div>2025年1月11日</div>
         </div>
       
       
@@ -350,11 +392,17 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2025/01/13/lecture18%20Red%20Black%20Trees/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/21/lecture22%20Graph%20Traversals%20and%20Implementation/" title="">
+                      <a href="/2025/01/10/lecture13%20Asymptotics%201%20%E6%B8%90%E8%BF%91/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>

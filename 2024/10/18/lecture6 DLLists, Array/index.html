@@ -19,21 +19,24 @@
   <meta name="author" content="moyu222">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="SLList 的缺点addLast()是速度慢！我们无法在列表中间添加元素。此外，如果我们的列表真的很大，我们必须从列表的前面开始，一直循环到列表的后面，然后再添加元素。 一个简单的解决方案回想一下，我们将列表的大小缓存为的实例变量SLList。如果我们last也缓存列表中的元素会怎么样？突然间，addLast()速度又变快了；我们立即访问最后一个元素，然后将元素添加到其中。但removeLast">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://moyu222.github.io/2025/01/22/hello-world/index.html">
+<meta property="og:title" content="MoyuBlog">
+<meta property="og:url" content="https://moyu222.github.io/2024/10/18/lecture6%20DLLists,%20Array/index.html">
 <meta property="og:site_name" content="MoyuBlog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="SLList 的缺点addLast()是速度慢！我们无法在列表中间添加元素。此外，如果我们的列表真的很大，我们必须从列表的前面开始，一直循环到列表的后面，然后再添加元素。 一个简单的解决方案回想一下，我们将列表的大小缓存为的实例变量SLList。如果我们last也缓存列表中的元素会怎么样？突然间，addLast()速度又变快了；我们立即访问最后一个元素，然后将元素添加到其中。但removeLast">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2025-01-22T15:19:02.157Z">
-<meta property="article:modified_time" content="2025-01-22T15:19:02.157Z">
+<meta property="article:published_time" content="2024-10-17T16:00:00.000Z">
+<meta property="article:modified_time" content="2025-01-09T03:07:48.181Z">
 <meta property="article:author" content="moyu222">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="DataStructure">
+<meta property="article:tag" content="UCB">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World - MoyuBlog</title>
+  <title>MoyuBlog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text=""></span>
           
         </div>
 
@@ -210,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-01-22 23:19" pubdate>
-          2025年1月22日 晚上
+        <time datetime="2024-10-18 00:00" pubdate>
+          2024年10月18日 凌晨
         </time>
       </span>
     
@@ -222,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 字
+          1.3k 字
         
       </span>
     
@@ -233,7 +236,7 @@
         
         
         
-          1 分钟
+          12 分钟
         
       </span>
     
@@ -270,24 +273,61 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header"></h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <p><strong>SLList 的缺点</strong><br><code>addLast()</code>是速度慢！我们无法在列表中间添加元素。此外，如果我们的列表真的很大，我们必须从列表的前面开始，一直循环到列表的后面，然后再添加元素。</p>
+<p><strong>一个简单的解决方案</strong><br>回想一下，我们将列表的大小缓存为的实例变量<code>SLList</code>。如果我们<code>last</code>也缓存列表中的元素会怎么样？突然间，<code>addLast()</code>速度又变快了；我们立即访问最后一个元素，然后将元素添加到其中。但<code>removeLast()</code>速度仍然很慢。在中 <code>removeLast()</code>，我们必须知道倒数第二个元素是什么，这样我们才能将缓存的<code>last</code>变量指向它。然后我们可以缓存一个<code>second-to-last</code> 变量，但现在如果我想删除倒数第二个元素，我需要知道倒数第三个元素在哪里。如何解决这个问题？</p>
+<p><strong>DLList</strong><br>解决方案是给每个元素<code>IntNode</code>一个<code>prev</code>指针，指向前一个元素。这样就创建了一个双向链表，即<code>DLList</code>。经过这种修改，从列表的前面和后面添加和删除元素会变得很快（尽管从中间添加&#x2F;删除元素仍然很慢）。</p>
+<p><strong>合并哨兵</strong><br>回想一下，我们向 添加了哨兵节点 <code>SLList</code>。对于<code>DLList</code>，我们可以有两个哨兵（一个用于前面，一个用于后面），也可以使用圆形哨兵。<code>DLList</code>使用圆形哨兵的 有一个哨兵。哨兵指向 列表的第一个元素<code>next</code>，指向 列表的最后一个元素<code>prev</code>。此外，列表的最后一个元素<code>next</code>指向哨兵，列表的第一个元素<code>prev</code>指向哨兵。对于空列表，哨兵在两个方向上都指向自身。<br>![[Pasted image 20241018114104.png]]<br>![[Pasted image 20241018114115.png]]</p>
+<p><strong>通用 DLList</strong><br>我们如何修改它<code>DLList</code>，以便它可以成为我们选择的任何对象的列表？回想一下，我们的类定义如下所示：</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DLList</span> </span>&#123; ... &#125;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>我们将把它改为</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs perl">public <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DLList</span>&lt;<span class="hljs-title">T</span>&gt; </span>&#123; ... &#125;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
+<p>&#x3D;&#x3D;其中<code>T</code>是占位符对象类型&#x3D;&#x3D;。请注意&#x3D;&#x3D;尖括号语法&#x3D;&#x3D;。还请注意，我们不必使用<code>T</code>；任何变量名都可以。在我们的中<code>DLList</code>，我们的项目现在属于类型<code>T</code>，并且我们的方法现在将<code>T</code>实例作为参数。我们还可以将我们的<code>IntNode</code>类重命名为<code>TNode</code>以提高准确性。</p>
+<p><strong>使用通用 DLList</strong><br>回想一下，要创建<code>DLList</code>，我们输入：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">DLList list <span class="hljs-operator">=</span> new DLList(<span class="hljs-number">10</span>)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
+<p>如果我们现在要创建一个<code>DLList</code>持有<code>String</code>对象，那么我们必须说：</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf">DLList&lt;String&gt; list <span class="hljs-operator">=</span> new DLList&lt;&gt;(<span class="hljs-string">&quot;bone&quot;</span>)<span class="hljs-comment">;</span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>在创建列表时，编译器会将所有的实例替换<code>T</code>为<code>String</code>！我们将在后面的课程中更详细地介绍泛型类型。</p>
+<p><strong>数组</strong><br>回想一下，变量只是一些位的盒子。例如，为<code>int x;</code> 我们提供了一个 32 位的内存盒。数组是一个特殊的对象，&#x3D;&#x3D;它由一系列按编号顺序排列的内存盒组成&#x3D;&#x3D;！要获取数组的第 i 项<code>A</code>，请使用 <code>A[i]</code>。数组的长度不能改变，&#x3D;&#x3D;并且数组的所有元素必须是同一类型&#x3D;&#x3D;（这与 Python 列表不同）。这些盒子是从零开始索引的，这意味着对于包含 N 个元素的列表，第一个元素位于 <code>A[0]</code>，最后一个元素位于<code>A[N - 1]</code>。与常规类不同，&#x3D;&#x3D;<strong>数组没有方法！&#x3D;&#x3D;</strong><code>length</code>但是数组有一个变量。<br>![[Pasted image 20241018114917.png]]</p>
+<p><strong>实例化数组</strong></p>
+<p>创建数组有三种有效符号。第一种方式指定数组的大小，并用默认值填充数组：</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-type">int</span>[] y = <span class="hljs-keyword">new</span> <span class="hljs-type">int</span>[<span class="hljs-number">3</span>];<br></code></pre></td></tr></table></figure>
+
+<p>第二种和第三种方法用特定值填充数组。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">int</span>[] x = new int[]&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><span class="hljs-attribute">int</span>[] w = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>我们可以使用数组索引来设置数组中的值。例如，我们可以说 <code>A[3] = 4;</code>。这将访问数组的<strong>第四个</strong><code>A</code>元素并将该框中的值设置为 4。</p>
+<p><strong>Arraycopy</strong><br>为了复制一个数组，我们可以使用 <code>System.arraycopy</code>。它需要 5 个参数；语法很难记住，所以我们建议使用网上的各种参考资料，比如 <a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/java/lang/system_arraycopy.htm">这个</a>。</p>
+<p><strong>2D 数组</strong></p>
+<p>我们可以声明多维数组。对于 2D 整数数组，我们使用以下语法：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs smali">int[][]<span class="hljs-built_in"> array </span>=<span class="hljs-built_in"> new </span>int[4][];<br></code></pre></td></tr></table></figure>
+
+<p>这将创建一个包含整数数组的数组。请注意，我们必须手动创建内部数组，如下所示：</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">array</span>[<span class="hljs-number">0</span>] = new int[]&#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>Java 还可以创建多维数组，并自动创建内部数组。为此，请使用以下语法：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs smali">int[][]<span class="hljs-built_in"> array </span>=<span class="hljs-built_in"> new </span>int[4][4];<br></code></pre></td></tr></table></figure>
+
+<p>我们也可以使用这样的符号：</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs smali">int[][]<span class="hljs-built_in"> array </span>=<span class="hljs-built_in"> new </span>int[][]&#123;&#123;1&#125;, &#123;1, 2&#125;, &#123;1, 2, 3&#125;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>获取具有特定值的数组。</p>
+<p><strong>数组与类</strong></p>
+<ul>
+<li>两者都是用来组织一堆内存的。</li>
+<li>两者都有固定数量的“盒子”。</li>
+<li>&#x3D;&#x3D;数组通过方括号符号访问。类通过点符号访问。&#x3D;&#x3D;</li>
+<li>数组中的&#x3D;&#x3D;元素必须全部为同一类型。类中的元素可以是不同类型的。&#x3D;&#x3D;</li>
+<li>&#x3D;&#x3D;数组索引是在运行时计算的。我们无法计算类成员变量名称&#x3D;&#x3D;。<br>![[Pasted image 20241018115030.png]]<br>![[Pasted image 20241018115054.png]]</li>
+</ul>
 
                 
               </div>
@@ -297,6 +337,17 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/" class="print-no-link">#java</a>
+      
+        <a href="/tags/DataStructure/" class="print-no-link">#DataStructure</a>
+      
+        <a href="/tags/UCB/" class="print-no-link">#UCB</a>
+      
+    </div>
+  
 </div>
 
 
@@ -305,8 +356,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://moyu222.github.io/2025/01/22/hello-world/</div>
+      <div></div>
+      <div>https://moyu222.github.io/2024/10/18/lecture6 DLLists, Array/</div>
     </div>
     <div class="license-meta">
       
@@ -318,7 +369,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2025年1月22日</div>
+          <div>2024年10月18日</div>
         </div>
       
       
@@ -350,11 +401,17 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2024/10/22/lecture7%20ALists,%20Resizing,%20vs.%20SList/" title="">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile"></span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/01/21/lecture22%20Graph%20Traversals%20and%20Implementation/" title="">
+                      <a href="/2024/10/16/lecture5%20SLLists,%20Nested%20Classes,%20Sentinel%20Nodes/" title="">
                         <span class="hidden-mobile"></span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
